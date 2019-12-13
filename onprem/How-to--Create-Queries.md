@@ -13,6 +13,10 @@ caps.latest.revision: 21
 manager: edupont
 ---
 # Creating Queries 
+
+A *query* object enables you to specify a set of data from the [!INCLUDE[navnow](includes/navnow_md.md)] database. You can query the database to retrieve fields from a single table or multiple tables. You can specify how to join tables in the query. You can filter the result data. You can specify totaling methods on fields, such as sums and averages.  
+
+
 A query describes a dataset of [!INCLUDE[navnow](includes/navnow_md.md)] data. Queries retrieve records from one or more tables and combine the records into rows and columns in a single dataset. You create queries in the development environment using Query Designer. To create a query, you define *data items* and *columns*. A data item specifies the table to retrieve records from. A column specifies a field of the table to include in the resulting dataset of a query. After you have added the data items and columns, you create links between the data items. A data item link determines which records to include in the dataset based on a common field between two data items. For more information, see [Understanding Data Item Links](Understanding-Data-Item-Links.md).  
 
 ### To create a query and add data items and columns  
@@ -30,7 +34,7 @@ A query describes a dataset of [!INCLUDE[navnow](includes/navnow_md.md)] data. Q
 
 5.  In the **Name** column, verify the default name or enter a Common Language Specification \(CLS\)–compliant name for the data item. The first character must be a letter. Subsequent characters can be any combination of letters, integers, and underscores.  
 
-     For more information, see the "Naming" section in [Common Language Specification](http://go.microsoft.com/fwlink/?LinkId=193144) in the MSDN Library.  
+     For more information, see the "Naming" section in [Common Language Specification](https://go.microsoft.com/fwlink/?LinkId=193144) in the MSDN Library.  
 
     > [!WARNING]  
     >  All DataItem and Column rows must have unique names.  

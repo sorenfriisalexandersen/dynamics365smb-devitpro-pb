@@ -2,13 +2,13 @@
 title: "Create Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/10/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -21,7 +21,7 @@ Creates an Automation object.
 
 ## Syntax
 ```
-[Ok := ]  File.Create(Name: String, [Encoding: TextEncoding])
+[Ok := ]  File.Create(Name: String [, Encoding: TextEncoding])
 ```
 > [!NOTE]  
 > This method can be invoked without specifying the data type name.  
@@ -55,18 +55,16 @@ An instance of the [File](file-data-type.md) data type.
   
 ## Example  
  The following example creates a file that is named TestFile.txt in the path C:\\TestFolder\\. The TestFile variable stores the file and path that is created. If the file is created, a message that states that the file is created is displayed. Otherwise, an error message is displayed. This example requires that you create the following global variable.  
-  
-|Variable name|DataType|  
-|-------------------|--------------|  
-|TestFile|File|  
-  
-```  
-  
-IF TestFile.CREATE('C:\TestFolder\TestFile.txt') THEN BEGIN  
-  MESSAGE('%1 is created', TestFile.NAME)  
-END  
-ELSE  
-ERROR('The file could not be created');  
+
+```
+ var
+    TestFile: File;
+begin
+    if TestFile.CREATE('C:\TestFolder\TestFile.txt') then begin  
+      MESSAGE('%1 is created', TestFile.NAME);  
+    end else  
+    ERROR('The file could not be created');  
+end;
 ```  
   
 ## See Also

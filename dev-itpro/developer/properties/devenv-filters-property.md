@@ -3,7 +3,7 @@ title: "Filters Property"
 
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.topic: article
 ms.service: "dynamics365-business-central"
 author: SusanneWindfeldPedersen
@@ -37,7 +37,7 @@ pagecustomization MyCustomization customizes "Customer List"
 
 ```
 
-For more information on how you can scan, find, and limit records in a list, see [Sorting, Searching, and Filtering Lists](https://docs.microsoft.com/en-us/dynamics365/business-central/ui-enter-criteria-filters). 
+For more information on how you can scan, find, and limit records in a list, see [Sorting, Searching, and Filtering Lists](/dynamics365/business-central/ui-enter-criteria-filters). 
   
 ## See Also  
 [Properties](devenv-properties.md)

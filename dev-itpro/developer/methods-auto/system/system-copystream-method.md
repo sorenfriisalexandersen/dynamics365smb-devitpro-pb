@@ -2,13 +2,13 @@
 title: "CopyStream Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Copies the information that is contained in an InStream to an OutStream.
 
 ## Syntax
 ```
-[Ok := ]  System.CopyStream(OutStream: OutStream, InStream: InStream, [BytesToRead: Integer])
+[Ok := ]  System.CopyStream(OutStream: OutStream, InStream: InStream [, BytesToRead: Integer])
 ```
 > [!NOTE]  
 > This method can be invoked without specifying the data type name.  
@@ -46,23 +46,22 @@ The InStream object from which you want to copy; the source stream.
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
 
 ## Example  
- This example requires that you create the following variables.  
-
-|Variable name|DataType|  
-|-------------------|--------------|  
-|F1|File|  
-|F2|File|  
-|InS|InStream|  
-|OutS|OutStream|  
 
 ```  
-F1.OPEN('c:\Test.txt');  
-F1.CREATEINSTREAM(InS);  
-F2.CREATE('c:\CopyTest.txt');  
-F2.CREATEOUTSTREAM(OutS);  
-COPYSTREAM(OutS,InS);  
-F1.CLOSE();  
-F2.CLOSE();  
+var
+    F1: File;
+    F2: File;
+    InS: InStream;
+    OutS: OutStream;
+begin
+    F1.OPEN('c:\Test.txt');  
+    F1.CREATEINSTREAM(InS);  
+    F2.CREATE('c:\CopyTest.txt');  
+    F2.CREATEOUTSTREAM(OutS);  
+    COPYSTREAM(OutS,InS);  
+    F1.CLOSE();  
+    F2.CLOSE();  
+end;
 ```  
 
 

@@ -2,7 +2,7 @@
 title: "Copyright and Trademarks"
 author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -23,4 +23,4 @@ Please refer to the following for information on notices and trademarks.
  © 2018 Microsoft. All rights reserved.  
 
 ## Trademarks  
- Microsoft, Microsoft Dynamics, Microsoft Dynamics NAV, Windows, Windows Server, and the other products listed on the [trademarks page](http://go.microsoft.com/fwlink/?LinkID=125878) of the Microsoft website are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
+ Microsoft, Microsoft Dynamics, Microsoft Dynamics NAV, Windows, Windows Server, and the other products listed on the [trademarks page](https://go.microsoft.com/fwlink/?LinkID=125878) of the Microsoft website are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.

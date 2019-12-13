@@ -3,7 +3,7 @@ title: "Develop a Horizontal Solution"
 description: "Enchance the capabilities that allows you to build an interface and control the data flow by developing an Horizontal service."
 author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -28,6 +28,7 @@ Learn more details on how you can build a Business Central offering in the **Rea
 
 ## See Also
 [Build Your Business on Dynamics 365 Business Central](readiness-welcome.md)  
+[Business Central Learning Catalog](https://go.microsoft.com/fwlink/?linkid=2002101)  
 [Integrate a 3rd Party Solution](readiness-thirdparty-solution.md)  
 [Development of a Vertical Solution](readiness-develop-vertical.md)  
 [Development of a Horizontal Solution](readiness-develop-horizontal.md)  

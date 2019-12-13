@@ -2,13 +2,13 @@
 title: "Run Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Loads and runs the unit of AL code you specify. To use this method, you can spec
 
 ## Syntax
 ```
-[Ok := ]  Codeunit.Run(Number: Integer, [var Record: Record])
+[Ok := ]  Codeunit.Run(Number: Integer [, var Record: Record])
 ```
 ## Parameters
 *Number*  
@@ -40,20 +40,20 @@ This optional parameter identifies a record. This parameter is a record data typ
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
 
 ## Example  
- This example runs two codeunits. The first uses a record parameter. The second is defined without a source table. This example requires that you create the following variables.  
-  
-|Variable name|DataType|Subtype|  
-|-------------------|--------------|-------------|  
-|FiscalYearCloseInstance|Codeunit|Fiscal Year-Close|  
-|AppMgmtInstance|Codeunit|ApplicationManagement|  
-|AccountRecord|Record|Accounting Period|  
-  
-```  
-AccountRecord.INIT;  
-IF NOT FiscalYearCloseInstance.RUN(AccountRecord) THEN  
-  ERROR('Codeunit run failed (with record).');  
-IF NOT AppMgmtInstance.RUN THEN  
-  ERROR('Codeunit run failed.');  
+ This example runs two codeunits. The first uses a record parameter. The second is defined without a source table.
+
+ ```
+var
+    FiscalYearCloseInstance: Codeunit "Fiscal Year-Close";
+    AppMgmtInstance: Codeunit ApplicationManagement;
+    AccountRecord: Record "Accounting Period";
+begin  
+    AccountRecord.INIT;  
+    if not FiscalYearCloseInstance.RUN(AccountRecord) then  
+      ERROR('Codeunit run failed (with record).');  
+    if not AppMgmtInstance.RUN then  
+      ERROR('Codeunit run failed.');  
+end;
 ```  
 
 ## See Also

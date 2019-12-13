@@ -2,13 +2,13 @@
 title: "Date2DWY Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -29,13 +29,17 @@ Number :=   System.Date2DWY(Date: Date, Value: Integer)
 The input date.  
 *Value*  
 &emsp;Type: [Integer](../integer/integer-data-type.md)  
-  
+Specifies what the function returns. The valid options are 1, 2, and 3.
+- The value 1 corresponds to day of the week (1-7, Monday = 1).
+- The value 2 corresponds to week number (1-53).
+- The value 3 corresponds to year.
+        
 
 
 ## Return Value
 *Number*  
 &emsp;Type: [Integer](../integer/integer-data-type.md)  
-  
+The resulting day of the week, week number, or year.  
 
 
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
@@ -44,28 +48,25 @@ The input date.
  If the input date to the **DATE2DWY** method is in a week which spans two years, then the **DATE2DWY** method computes the output year as the year that has more days of the given week. For example, if the input date is 010114, then the date is in a week that starts on Monday, December 29, 2013, and ends Sunday, January 4, 2014. This week has three days in 2008 and four days in 2014. Therefore, the output year is 2014.  
   
 ## Example  
- This example shows a special case that occurs when you use the **DATE2DWY** method in a week which spans two years. This code example requires that you create the following global variables and text constants.  
-  
-|Variable name|DataType|  
-|-------------------|--------------|  
-|InputDate|Date|  
-|DayOfWeek|Integer|  
-|WeekNumber|Integer|  
-|Year|Integer|  
-  
-|Text constant name|ENU value|  
-|------------------------|---------------|  
-|Text000|The date %1 corresponds to:\\|  
-|Text001|The day of the week: %2\\|  
-|Text002|The week number: %3\\|  
-|Text003|The year: %4|  
-  
+ This example shows a special case that occurs when you use the **DATE2DWY** method in a week which spans two years. 
+ 
 ```  
-InputDate := 010114D;  
-DayOfWeek := DATE2DWY(InputDate, 1);  
-WeekNumber := DATE2DWY(InputDate, 2);  
-Year := DATE2DWY(InputDate, 3);  
-MESSAGE(Text000 + Text001 + Text002 + Text003, InputDate, DayOfWeek, WeekNumber, Year);  
+var
+    InputDate: Date;
+    DayOfWeek: Integer;
+    WeekNumber: Integer;
+    Year: Integer;
+    Text000: Label 'The date %1 corresponds to:\\';
+    Text001: Label 'The day of the week: %2\\';
+    Text002: Label 'The week number: %3\\';
+    Text003: Label 'The year: %4';
+begin
+    InputDate := 20140101D;  
+    DayOfWeek := DATE2DWY(InputDate, 1);  
+    WeekNumber := DATE2DWY(InputDate, 2);  
+    Year := DATE2DWY(InputDate, 3);  
+    MESSAGE(Text000 + Text001 + Text002 + Text003, InputDate, DayOfWeek, WeekNumber, Year);  
+end;
 ```  
   
  The message window displays the following:  

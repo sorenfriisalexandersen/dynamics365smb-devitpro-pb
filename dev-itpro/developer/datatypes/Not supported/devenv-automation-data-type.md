@@ -1,7 +1,7 @@
 ---
 title: "Automation Data Type"
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -44,7 +44,7 @@ Error: 0x80028018 (-2147647512)
 Description: Old Format or Invalid Type Library   
 ```  
 
-For more information, see Microsoft Help and Support article [320369: BUG: "Old format or invalid type library" error when automating Excel](http://go.microsoft.com/fwlink/?linkid=3052&kbid=320369).  
+For more information, see Microsoft Help and Support article [320369: BUG: "Old format or invalid type library" error when automating Excel](https://go.microsoft.com/fwlink/?linkid=3052&kbid=320369).  
 
 <!--
 

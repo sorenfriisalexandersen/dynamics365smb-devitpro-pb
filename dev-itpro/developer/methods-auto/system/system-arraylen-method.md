@@ -2,13 +2,13 @@
 title: "ArrayLen Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Returns the total number of elements in an array or the number of elements in a 
 
 ## Syntax
 ```
-Length :=   System.ArrayLen(Array: Array of [Any], [Dimension: Integer])
+Length :=   System.ArrayLen(Array: Array of [Any] [, Dimension: Integer])
 ```
 > [!NOTE]  
 > This method can be invoked without specifying the data type name.  
@@ -47,18 +47,17 @@ If you use ARRAYLEN with an input parameter that is not an array, a run-time err
 ## Example  
 This example shows how to use the ARRAYLEN method.  
   
-This example requires that you create the following global variables.  
-  
-|Variable name|DataType|Dimension|  
-|-------------------|--------------|---------------|  
-|Array1|Integer|2|  
-|Array2|Integer|3;4|  
-  
+
 ```  
-MESSAGE('Array1, Total number of elements: %1', ARRAYLEN(Array1));  
-MESSAGE('Array2, Dimension 1 size: %1', ARRAYLEN(Array2,1));  
-MESSAGE('Array2, Dimension 2 size: %1', ARRAYLEN(Array2,2));  
-MESSAGE('Array2, Total number of elements: %1', ARRAYLEN(Array2));  
+var
+    Array1: array[2] of Integer;
+    Array2: array[3,4] of Integer;
+begin
+    MESSAGE('Array1, Total number of elements: %1', ARRAYLEN(Array1));  
+    MESSAGE('Array2, Dimension 1 size: %1', ARRAYLEN(Array2,1));  
+    MESSAGE('Array2, Dimension 2 size: %1', ARRAYLEN(Array2,2));  
+    MESSAGE('Array2, Total number of elements: %1', ARRAYLEN(Array2));  
+end;
 ```  
   
  The following messages are displayed.  

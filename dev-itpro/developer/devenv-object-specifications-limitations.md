@@ -1,7 +1,7 @@
 ---
 title: "Object Specifications and Limitations"
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -88,4 +88,4 @@ The following characteristics are based on maximum capacity specifications for S
   
 ## See Also  
  [Field Data Types](datatypes/devenv-field-data-types.md)   
- [Maximum Capacity Specifications for SQL Server](http://go.microsoft.com/fwlink/?LinkId=302003)
+ [Maximum Capacity Specifications for SQL Server](https://go.microsoft.com/fwlink/?LinkId=302003)

@@ -2,14 +2,12 @@
 title: "AL Reference Guide"
 author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-ms.assetid: d60655a7-3e9b-4577-a2e3-d12427a656c2
-caps.latest.revision: 16
 ---
 
 # AL Reference Guide
@@ -23,10 +21,8 @@ For more information about the [!INCLUDE[d365_dev_long_md](includes/d365_dev_lon
 
 ## In this section  
 
-- [AL methods](methods-auto/library.md)  
-
+- [Methods](methods-auto/library.md)  
 - [Properties](properties/devenv-properties.md)  
-
 - [Triggers](triggers/devenv-triggers.md)  
 
 ## See Also  

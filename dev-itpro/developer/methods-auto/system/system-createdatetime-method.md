@@ -2,13 +2,13 @@
 title: "CreateDateTime Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -43,22 +43,21 @@ The time that you want to use to create a DateTime. You cannot use an undefined 
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
 
 ## Example  
- These examples of using the CREATEDATETIME method require that you create the following variables.  
-  
-|Name|DataType|  
-|----------|--------------|  
-|TestDate|Date|  
-|TestTime|Time|  
-|TestDateTime|DateTime|  
-  
+
 ```  
-TestDate := TODAY;  
-TestTime := TIME;  
-TestDateTime := CREATEDATETIME(TestDate,TestTime);  
-…  
-TestDateTime := CREATEDATETIME(081111D,020000T);  
-…  
-TestDateTime := CREATEDATETIME(010101D,0T);  
+var
+    TestDate: Date;
+    TestTime: Time;
+    TestDateTime: DateTime;
+begin
+    TestDate := TODAY;  
+    TestTime := TIME;  
+    TestDateTime := CREATEDATETIME(TestDate,TestTime);  
+    …  
+    TestDateTime := CREATEDATETIME(081111D,020000T);  
+    …  
+    TestDateTime := CREATEDATETIME(010101D,0T);  
+end;
 ```  
 
 ## See Also

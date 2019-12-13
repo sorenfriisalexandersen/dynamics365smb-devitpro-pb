@@ -2,13 +2,13 @@
 title: "Date Data Type"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -31,7 +31,7 @@ The displayed text format of the date is determined by your Region and Language 
   
 ## Syntax
 The syntax for defining DateTime format follows the [ISO standard](https://en.wikipedia.org/wiki/ISO_8601). 
-- The syntax for defining Date format is `yyyymmddD`, where `D` is a mandatory letter. For example, `20180325D`, read as the 26th of March, 2018.
+- The syntax for defining Date format is `yyyymmddD`, where `D` is a mandatory letter. For example, `20180325D`, read as the 25th of March, 2018.
 
  To assign a normal date to a variable, use the following format: `yyyymmddD`. 
   
@@ -44,17 +44,15 @@ The syntax for defining DateTime format follows the [ISO standard](https://en.wi
 
 
 ## Example  
-This example shows a valid assignment of date. It requires that you define the following variable.  
-  
-|Variable|DataType|  
-|--------|--------|  
-|Date1|Date|  
-  
-This example is compiled and run on a computer with the regional format set to English (United States).
+This example shows a valid assignment of date. This example is compiled and run on a computer with the regional format set to English (United States).
 
 ```  
-Date1 := 20180612D;  
-MESSAGE(FORMAT(Date1));  
+var
+    Date1: Date;
+begin
+    Date1 := 20180612D;  
+    MESSAGE(FORMAT(Date1));  
+end;
 ```  
   
 The message window displays the following:  

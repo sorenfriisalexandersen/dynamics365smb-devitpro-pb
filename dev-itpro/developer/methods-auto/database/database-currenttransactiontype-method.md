@@ -2,13 +2,13 @@
 title: "CurrentTransactionType Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -70,7 +70,7 @@ CURRENTTRANSACTIONTYPE := TRANSACTIONTYPE::UpdateNoLocks;
   
 ```  
 //Example 2  
-IF CURRENTTRANSACTIONTYPE = TRANSACTIONTYPE::UpdateNoLocks THEN...  
+if CURRENTTRANSACTIONTYPE = TRANSACTIONTYPE::UpdateNoLocks then...  
 ```  
   
 ## Example  

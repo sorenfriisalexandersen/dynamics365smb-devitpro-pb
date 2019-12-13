@@ -2,13 +2,13 @@
 title: "PrintOnlyIfDetail Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -44,23 +44,23 @@ The current settings of the PrintOnlyIfDetail property.
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
 
 ## Example  
- The following example is from the OnAfterGetRecord trigger of a report. If the PrintOnlyIfDetail property is true and if a GLEntryPage record exists, given the current filters, then the PageGroupNo is incremented. This example requires that you create the following variables.  
-  
-|Variable name|DataType|Subtype|  
-|-------------------|--------------|-------------|  
-|GLEntryPage|Record|G/L Entry|  
-|PageGroupNo|Integer|Not applicable|  
-  
+ The following example is from the OnAfterGetRecord trigger of a report. If the PrintOnlyIfDetail property is true and if a GLEntryPage record exists, given the current filters, then the PageGroupNo is incremented.
+ 
 ```  
-IF CurrReport.PRINTONLYIFDETAIL AND GLEntryPage.FIND('-') THEN  
-  PageGroupNo := PageGroupNo + 1;  
+var
+    GLEntryPage: Record "G/L Entry";
+    PageGroupNo: Integer;
+begin
+    if CurrReport.PRINTONLYifDETAIL and GLEntryPage.FIND('-') then  
+      PageGroupNo := PageGroupNo + 1;  
+end;
 ```  
   
 ## Example  
  The following example sets the value of the [PrintOnlyIfDetail Property](../../properties/devenv-printonlyifdetail-property.md) to true. It requires that you create a Report variable named Report111. The Subtype of the variable is report 111, Customer - Top 10 List.  
   
 ```  
-IsPrintOnlyIfDetail := Report111.PRINTONLYIFDETAIL(true);  
+IsPrintOnlyIfDetail := Report111.PRINTONLYifDETAIL(true);  
 ```  
   
 

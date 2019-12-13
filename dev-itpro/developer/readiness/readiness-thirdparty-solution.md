@@ -3,7 +3,7 @@ title: "Integrate a 3rd Party Solution"
 description: "An online service that you can connect and integrate with Dynamics 365 Business Central."
 author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -34,6 +34,7 @@ Learn more details on how you can build a Business Central offering in the
 
 ## See Also
 [Build Your Business on Dynamics 365 Business Central](readiness-welcome.md)  
+[Business Central Learning Catalog](https://go.microsoft.com/fwlink/?linkid=2002101)  
 [Integrate a 3rd Party Solution](readiness-thirdparty-solution.md)  
 [Development of a Vertical Solution](readiness-develop-vertical.md)  
 [Development of a Horizontal Solution](readiness-develop-horizontal.md)  

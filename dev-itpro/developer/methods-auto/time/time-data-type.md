@@ -2,13 +2,13 @@
 title: "Time Data Type"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -39,7 +39,7 @@ MyTime := 030000T;
 MESSAGE(FORMAT(MyTime));  
 ```  
   
-The following shows what the message windows display on a computer with the regional format set to English (United States).  
+The following shows what the message windows display accordingly on a computer with the regional format set to English (United States) for the syntax examples above.  
   
 **11:59:00 AM**
   

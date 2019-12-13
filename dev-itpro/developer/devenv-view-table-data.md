@@ -3,7 +3,7 @@ title: "Viewing Table Data in Browser"
 description: "View tables in browser for troubleshooting"
 author: jswymer
 ms.custom: na
-ms.date: 06/11/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -19,10 +19,10 @@ For developers, administrators, and support personnel, it can be useful to inspe
 
 - In a development environment, in addition to viewing a table directly from the [!INCLUDE[d365fin_web_md](includes/d365fin_web_md.md)], developers can view a table automatically when they publish/debug an AL project from Visual Studio Code.
 
-> [!NOTE]
+> [!NOTE]  
 > The table appears as read-only in the client, so modifications, insertions, and deletions cannot be made.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Data in the tables can be sensitive. Be sure to follow your organization's guidelines for handling such data. 
 
 ## Required permissions
@@ -33,7 +33,7 @@ Whether viewing the table directly from the client or from Visual Studio Code, y
 
 Any end-user that is assigned these permissions will be able to view that table in the browser.
 
-For information about assigning permissions, see [Manage Users and Permissions](https://docs.microsoft.com/en-US/dynamics365/financials/ui-how-users-permissions).
+For information about assigning permissions, see [Manage Users and Permissions](/dynamics365/financials/ui-how-users-permissions).
  
 ## View a table object directly from the client
 To view a table, you add the `table=<TableID>` parameter to the client's address (URL), replacing `<TableID>` with the ID of the table that you want to view.
@@ -98,7 +98,6 @@ You cannot view virtual tables or the following system tables:
 
 |  ID  |  Name  |
 |------|--------|
-| 2000000170 |Configuration Package File|
 | 2000000170 |Configuration Package File|
 | 2000000173 |Data Sensitivity|
 | 2000000100 |Debugger Breakpoint|

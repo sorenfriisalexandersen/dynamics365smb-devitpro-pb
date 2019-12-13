@@ -2,13 +2,13 @@
 title: "Write Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -50,23 +50,22 @@ CLEAR(BigText)
   
 ## Example  
  This example shows how to stream a BigText to a BLOB field in a table.  
-  
- This example requires that you define the following variables.  
-  
-|Variable name|DataType|Subtype|  
-|-------------------|--------------|-------------|  
-|Bstr|BigText|Not applicable|  
-|ItemRec|Record|Item|  
-|Ostream|OutStream|Not applicable|  
-  
-```  
-Bstr.ADDTEXT('This is the text string that we want to store in a BLOB field.');  
-ItemRec.Picture.CREATEOUTSTREAM(Ostream);  
-Bstr.WRITE(Ostream);  
-ItemRec.INSERT;  
+
+```
+var
+    Bstr: BigText;
+    Ostream: OutStream;
+    ItemRec: Record Item;
+begin 
+    Bstr.ADDTEXT('This is the text string that we want to store in a BLOB field.');  
+    ItemRec.Picture.CREATEOUTSTREAM(Ostream);  
+    Bstr.WRITE(Ostream);  
+    ItemRec.INSERT;  
+end;
 ```  
 
 ## See Also
+
 [BigText Data Type](bigtext-data-type.md)  
 [Getting Started with AL](../../devenv-get-started.md)  
 [Developing Extensions](../../devenv-dev-overview.md)

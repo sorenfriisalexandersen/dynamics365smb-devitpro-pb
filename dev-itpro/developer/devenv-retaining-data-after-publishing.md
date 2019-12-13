@@ -4,7 +4,7 @@ description: "Retaining table data after publishing an extension"
 
 author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.topic: article
 ms.service: "dynamics365-business-central"
 ms.author: solsen
@@ -24,7 +24,7 @@ The default value for `schemaUpdateMode` is set to the **Synchronize** mode, whi
      "type": "al",
      "request": "launch",
      "name": "your own server",
-     "server": "http://localhost",
+     "server": "https://localhost",
      "serverInstance": "Nav",
      "authentcation": "UserPassword", 
      "startupobjectId": 22,

@@ -2,13 +2,13 @@
 title: "SetTaskReady Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 05/23/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Sets a task that runs a codeunit to the ready state. The task will not run unles
 
 ## Syntax
 ```
-[Ok := ]  TaskScheduler.SetTaskReady(Task: Guid, [NotBefore: DateTime])
+[Ok := ]  TaskScheduler.SetTaskReady(Task: Guid [, NotBefore: DateTime])
 ```
 ## Parameters
 *Task*  
@@ -43,16 +43,14 @@ Sets a task that runs a codeunit to the ready state. The task will not run unles
 
 ## Example  
  The following example creates a task, and then uses the SETTASKREADY method to set the task to ready.  
-
- The code requires that you create the following AL variable.  
-
-|Variable|DataType|  
-|--------------|--------------|  
-|TaskID|GUID|  
-
+ 
 ```  
-TaskID := TASKSCHEDULER.CREATETASK(CODEUNIT::"Job Queue Dispatcher", CODEUNIT::"Job Queue Error Handler");  
-TASKSCHEDULER.SETTASKREADY(taskID);  
+var
+    TaskID: GUID;
+begin
+    TaskID := TASKSCHEDULER.CREATETASK(CODEUNIT::"Job Queue Dispatcher", CODEUNIT::"Job Queue Error Handler");  
+    TASKSCHEDULER.SETTASKREADY(taskID);  
+end;
 ```  
 
 ## See Also

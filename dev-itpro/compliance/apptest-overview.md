@@ -3,7 +3,7 @@ title: "Rules and Guidelines for AL Code"
 description: "Describing the steps you must go through to successfully submit your Dynamics 365 Business Central app to AppSource."
 author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 06/17/2019
+ms.date: 10/25/2019
 ms.reviewer: edupont
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -72,7 +72,7 @@ To help you save time, we‘re sharing a list of the top 15 common pitfalls that
     Your app file must be digitally signed with a certificate from a third-party certification authority trusted by Windows.
 12. You tested your app on an obsolete [!INCLUDE[d365fin_long_md](../includes/d365fin_long_md.md)] version (or never even tested it)
 
-    Make sure that your app is properly tested on the correct version. For more information, see [Current Build - Developing for Dynamics 365 Business Central](https://partner.microsoft.com/en-us/dashboard/collaborate/packages/4756) on the Collaborate site.
+    Make sure that your app is properly tested on the correct version. For more information, see [Current Build - Developing for Dynamics 365 Business Central](https://partner.microsoft.com/dashboard/collaborate/packages/4756) on the Collaborate site.
 13. You tested using SUPER permissions
 
     You tested your app, but your user had SUPER permissions. This can hide critical errors. You must test with a user that doesn’t have the SUPER permissions. The user must have the ESSENTIAL license. For more information, see [Testing your Extension](apptest-testingyourextension.md).  
@@ -81,7 +81,8 @@ To help you save time, we‘re sharing a list of the top 15 common pitfalls that
     Our validation team is testing your app functionality manually, so we need to be able to understand the core functionality of your app. If your user scenario document is missing important details that are needed for us to properly walk through your app’s setup and usage scenarios, we cannot validate your app successfully. For more information, see [User Scenario Documentation](apptest-userscenario.md).
 15. The .json file is incorrect
 
-    There are many values in the app.json file that may not be mandatory to compile your app, but are mandatory for your app to be in AppSource. For example, your app cannot be published to a production tenant if the **target** value is set to *Internal*. It must be set to *Extension*. For information, see [JSON Files](../developer/devenv-json-files.md).
+    There are many values in the app.json file that may not be mandatory to compile your app, but are mandatory for your app to be in AppSource. For example, your app cannot be published to a production tenant if the **target** value is set to *OnPrem*. It must be set to *Cloud*. For information, see [JSON Files](../developer/devenv-json-files.md).
+
 
 ## See Also
 [Best Practices for AL Code](apptest-bestpracticesforalcode.md)  

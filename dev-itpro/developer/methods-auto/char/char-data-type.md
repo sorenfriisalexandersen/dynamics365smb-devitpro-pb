@@ -2,13 +2,13 @@
 title: "Char Data Type"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -27,7 +27,7 @@ Stores a single, 16-bit character as a value in the range 0 to 65535. You can co
  You can assign a constant string of the length 1 to a Char variable, as shown in the first line of the following code example. You can assign a single Char in a Text or Code variable to a Char variable, as shown in the second line of the following code example. You can assign a numeric value to a Char variable, as shown in the third line of the following code example.  
 
  <!-- //NAV 
- A Char variable represents Unicode characters in the same way as the .NET Framework Char structure. For more information about the .NET Framework Char structure, see [Char Structure](http://go.microsoft.com/fwlink/?LinkId=253590).  --> 
+ A Char variable represents Unicode characters in the same way as the .NET Framework Char structure. For more information about the .NET Framework Char structure, see [Char Structure](https://go.microsoft.com/fwlink/?LinkId=253590).  --> 
   
 ```  
 C := 'A';  

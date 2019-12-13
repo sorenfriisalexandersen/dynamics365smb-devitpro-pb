@@ -2,13 +2,13 @@
 title: "DeleteEncryptionKey Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -32,7 +32,7 @@ Deletes an encryption key for the current tenant.
  This code example checks if encryption is configured for the tenant using the [ENCRYPTIONENABLED](../../methods-auto/system/system-encryptionenabled-method.md) method and if so, it performs the deletion of the encryption key.  
 
 ```  
-IF NOT ENCRYPTIONENABLED THEN  
+if not ENCRYPTIONENABLED then  
   ERROR('Encryption has not been enabled.');  
   DELETEENCRYPTIONKEY();  
 ```

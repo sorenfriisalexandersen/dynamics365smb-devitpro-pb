@@ -3,7 +3,7 @@ author: solsen
 title: "Testing the Advanced Sample Extension"
 description: "Includes test code for the advanced example extension."
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -629,7 +629,7 @@ codeunit 50103 "Customer Rewards Test"
         // [When] Customer card page is opened 
         CustomerCardTestPage.OpenView; 
 
-        // [Then] Reward fiels are exist 
+        // [Then] Reward fields are exist 
         Assert.IsTrue(CustomerCardTestPage.RewardLevel.Visible, 'Reward Level should be visible'); 
         Assert.IsFalse(CustomerCardTestPage.RewardLevel.Editable, 'Reward Level should not be editable'); 
         Assert.IsTrue(CustomerCardTestPage.RewardPoints.Visible, 'Reward Points should be visible'); 

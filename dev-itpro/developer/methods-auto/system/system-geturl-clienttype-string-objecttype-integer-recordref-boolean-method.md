@@ -2,13 +2,13 @@
 title: "GetUrl Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Generates a URL for the specified client target that is based on the configurati
 
 ## Syntax
 ```
-String :=   System.GetUrl(ClientType: ClientType, Company: String, ObjectType: ObjectType, ObjectId: Integer, RecordRef: RecordRef, [UseFilters: Boolean])
+String :=   System.GetUrl(ClientType: ClientType, Company: String, ObjectType: ObjectType, ObjectId: Integer, RecordRef: RecordRef [, UseFilters: Boolean])
 ```
 > [!NOTE]  
 > This method can be invoked without specifying the data type name.  

@@ -2,13 +2,13 @@
 title: "SetRecFilter Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/09/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -34,23 +34,19 @@ An instance of the [RecordRef](recordref-data-type.md) data type.
  This method works the same as the [SETRECFILTER Method \(Record\)](../../methods/devenv-setrecfilter-method-record.md).  
 
 ## Example  
- The following example opens the Customer table as a RecordRef variable that is named MyRecordRef. The SETRECFILTER method sets the values in the current key of the current record as a record filter. The [GETFILTERS Method \(RecordRef\)](../../methods/devenv-getfilters-method-recordref.md) retrieves the filters that have been set and displays them in a message box. No. is displayed because the filter is set on the No. field, which is the current key. This example requires that you create the following global variables and text constant.  
-
-|Variable name|DataType|  
-|-------------------|--------------|  
-|MyRecordRef|RecordRef|  
-|varFilters|Test|  
-
-|Text constant name|ENU value|  
-|------------------------|---------------|  
-|Text000|The filter is set on the %1 field.|  
-
+ The following example opens the Customer table as a RecordRef variable that is named MyRecordRef. The SETRECFILTER method sets the values in the current key of the current record as a record filter. The [GETFILTERS Method \(RecordRef\)](recordref-getfilters-method.md) retrieves the filters that have been set and displays them in a message box. No. is displayed because the filter is set on the No. field, which is the current key. 
+ 
 ```  
-
-MyRecordRef.OPEN(DATABASE::Customer);  
-MyRecordRef.SETRECFILTER;  
-varFilters := MyRecordRef.GETFILTERS;  
-MESSAGE(Text000, varFilters);  
+var
+    MyRecordRef: RecordRef;
+    varFilters: Text;
+    Text000: Label 'The filter is set on the %1 field.';
+begin 
+    MyRecordRef.OPEN(DATABASE::Customer);  
+    MyRecordRef.SETRECFILTER;  
+    varFilters := MyRecordRef.GETFILTERS;  
+    MESSAGE(Text000, varFilters);  
+end;
 ```  
 
 ## See Also

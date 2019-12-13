@@ -9,7 +9,7 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms. search.keywords: deprecated, Canada, local functionality
-ms.date: 05/31/2019
+ms.date: 10/01/2019
 ms.author: bholtorf
 
 ---
@@ -23,6 +23,20 @@ Shows a list of financial transactions for a selected customer statements for a 
 |Moved, Removed, or Replaced?|Why?| When?|
 |----|----|----|
 |Replaced| The Standard Statement report (report 1316) provides the same capabilities as the Customer Statement report (report 10072), plus the ability to customize layouts in Word, and it is available for all countries. | 2019 release wave 2 |
+
+## Aged Accounts Payable Report
+Shows a list of aged remaining balances for each vendor for a given period of time. 
+
+|Moved, Removed, or Replaced?|Why?| When?|
+|----|----|----|
+|Replaced| The Aged Accounts Payable report (report 322) provides the same capabilities as the (local) Aged Accounts Payable (report 10085) and it is available for all countries. | 2019 release wave 2 |
+
+## Aged Accounts Receivable Report
+Shows a list of aged remaining balances for each customer for a given period of time. 
+
+|Moved, Removed, or Replaced?|Why?| When?|
+|----|----|----|
+|Replaced| The Aged Accounts Receivable report (report 120) provides the same capabilities as the (local) Aged Accounts Receivable (report 10040) and it is available for all countries. | 2019 release wave 2 |
 
 ## See Also
 [Upgrading [!INCLUDE[prodshort](../developer/includes/prodshort.md)]](upgrading-to-business-central.md)  

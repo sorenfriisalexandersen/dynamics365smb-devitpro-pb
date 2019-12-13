@@ -2,13 +2,14 @@
 title: "Troubleshooting: Using the Event Log to Monitor Long Running SQL Queries in Microsoft Dynamics 365 Business Central"
 description: This topic describes how to troubleshoot long running SQL queries that use the event viewer.
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
 ms.assetid: 014e3285-02be-459c-9a54-eae45ea71e04
+author: SusanneWindfeldPedersen
 ---
 
 
@@ -23,8 +24,7 @@ Identifying long running SQL queries can be a good starting point when doing a p
 > [!NOTE]  
 > The SQL queries that exceed the set threshold will be displayed in the Application window of the Event Viewer as *Warning*. 
 
-If the value of the [SqlLongRunningThreshold](configure-server-instance.md) key was set to the default value of 1000 milliseconds, you will see the message: "*Action completed successfully, but it took longer than the given threshold.*" for actions that took longer than that. To meet your performance expections in production, you can set the threshold to a different value without doing a server restart. For more information on how you can do this, see [Monitoring Long Running SQL Queries using the Event Log](monitor-long-running-sql-queries-event-log.md). 
-
+If the value of the [SqlLongRunningThreshold](configure-server-instance.md) key was set to the default value of 1000 milliseconds, you will see the message: "*Action completed successfully, but it took longer than the given threshold.*" for actions that took longer than that. To meet your performance expectations in production, you can set the threshold to a different value without doing a server restart. For more information on how you can do this, see [Monitoring Long Running SQL Queries using the Event Log](monitor-long-running-sql-queries-event-log.md). 
 
 ![Threshold exceeded](../developer/media/EventViewerExample1.png)
 
@@ -70,5 +70,5 @@ CounterInformation:
 [Tools for Monitoring Performance Counters and Events](tools-monitor-performance-counters-and-events.md)  
 [Business Central Server Administration Tool](administration-tool.md)  
 [Troubleshooting: Using Query Store to Monitor Query Performance in Business Central](troubleshoot-query-performance-using-query-store.md)  
-[SQL Trace](https://docs.microsoft.com/en-us/sql/relational-databases/sql-trace/sql-trace)
+[SQL Trace](/sql/relational-databases/sql-trace/sql-trace)
 

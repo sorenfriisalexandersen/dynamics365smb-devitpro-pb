@@ -2,13 +2,13 @@
 title: "Close Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/10/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -38,24 +38,22 @@ An instance of the [File](file-data-type.md) data type.
  If the file is not open, a run-time error will occur.  
   
 ## Example  
- The following example determines whether the specified file exists. If it exists, the [WRITEMODE Method \(File\)](../../methods-auto/file/file-writemode-method.md) allows the file to be open for writing. The [OPEN Method \(File\)](../../methods-auto/file/file-open-method.md) opens the file, the [WRITE Method \(File\)](../../methods/devenv-write-method-file.md) writes the text “Hello World” to the file, and then the CLOSE method closes the file. If the file does not exist, an error message is displayed. This example requires that you create the following global variables. This example assumes that you have created the following file C:\\TestFolder\\TestFile2.txt.  
-  
-|Variable name|DataType|  
-|-------------------|--------------|  
-|FileName|Text|  
-|TestFile|File|  
-  
-```  
-  
-FileName := 'C:\TestFolder\TestFile2.txt';  
-IF EXISTS(FileName) THEN BEGIN  
-  TestFile.WRITEMODE(TRUE);  
-  TestFile.OPEN(FileName);  
-  TestFile.WRITE('Hello World');  
-  TestFile.CLOSE;  
-END  
-ELSE  
-MESSAGE('%1 does not exist.', FileName);  
+ The following example determines whether the specified file exists. If it exists, the [WRITEMODE Method \(File\)](../../methods-auto/file/file-writemode-method.md) allows the file to be open for writing. The [OPEN Method \(File\)](../../methods-auto/file/file-open-method.md) opens the file, the [WRITE Method \(File\)](../../methods/devenv-write-method-file.md) writes the text “Hello World” to the file, and then the CLOSE method closes the file. If the file does not exist, an error message is displayed. This example assumes that you have created the following file C:\\TestFolder\\TestFile2.txt.  
+
+```
+var
+    FileName: Text;
+    TestFile: File;
+begin
+    FileName := 'C:\TestFolder\TestFile2.txt';  
+    if EXISTS(FileName) then begin  
+      TestFile.WRITEMODE(TRUE);  
+      TestFile.OPEN(FileName);  
+      TestFile.WRITE('Hello World');  
+      TestFile.CLOSE;  
+    end else  
+    MESSAGE('%1 does not exist.', FileName);  
+end;
 ```  
   
 

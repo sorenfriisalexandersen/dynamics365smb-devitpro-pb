@@ -3,7 +3,7 @@ title: "Choosing Your Dynamics 365 Business Central Development Sandbox Environm
 description: "Overview of the differences between the offered sandbox environments for Dynamics 365 Business Central."
 author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -36,7 +36,7 @@ The following topic outlines the most important capabilities on the offered deve
 |Database access|No|Yes|
 |**Extensions**|Must be manually installed.| Must be manually installed.|
 |From AppSource|Available.|Not available.|
-|From File|Not available.|Available.|
+|From File|Available.|Available.|
 |From Visual Studio Code|Available.|Available.|
 
 ## Getting Started

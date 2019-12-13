@@ -2,13 +2,13 @@
 title: "Caption Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/09/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -38,28 +38,25 @@ The caption of the table.
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
 
 ## Remarks  
- This method works just like the [TABLECAPTION Method \(Record\)](../../methods/devenv-tablecaption-method-record.md).  
+ This method works just like the [TABLECAPTION Method (Record)](../record/record-tablecaption-method.md).  
   
 ## Example  
- The following example selects tables 3 through 5 and opens each table as a RecordRef variable that is named MyRecordRef. The CAPTION method uses the RecorRef variable to retrieve the caption for each of the tables and displays the table number and the caption in a message box. The [CLOSE Method \(RecordRef\)](../../methods/devenv-close-method-recordref.md) closes the table. This example requires that you create the following global variables and text constant.  
+ The following example selects tables 3 through 5 and opens each table as a RecordRef variable that is named MyRecordRef. The CAPTION method uses the RecorRef variable to retrieve the caption for each of the tables and displays the table number and the caption in a message box. The [CLOSE Method (RecordRef)](recordref-close-method.md) closes the table.
   
-|Variable name|DataType|  
-|-------------------|--------------|  
-|MyRecordRef|RecordRef|  
-|varCaption|Text|  
-|i|Integer|  
-  
-|Text constant name|DataType|ENU value|  
-|------------------------|--------------|---------------|  
-|Text000|Text|Table No: %1 Caption: %2|  
-  
-```  
-FOR i := 3 TO 6 DO BEGIN  
-MyRecordRef.OPEN(i);  
-varCaption := MyRecordRef.CAPTION;  
-MESSAGE(Text000, i, varCaption);  
-MyRecordRef.CLOSE;  
-END;  
+```
+var
+    varCaption: Text;
+    i: Integer;
+    MyRecordRef: RecordRef;
+    Text000: Label 'Table No: %1 Caption: %2';
+begin
+    for i := 3 TO 6 do begin  
+        MyRecordRef.OPEN(i);  
+        varCaption := MyRecordRef.CAPTION;  
+        MESSAGE(Text000, i, varCaption);  
+        MyRecordRef.CLOSE;  
+        end;  
+end;
 ```  
   
  This example displays the following:  

@@ -2,13 +2,13 @@
 title: "GetLastErrorObject Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -42,24 +42,23 @@ DotNet :=   System.GetLastErrorObject()
 ## Example  
  This example uses the GETLASTERROROBJECT method to get an exception object that occurs. In this example, the Microsoft .NET Framework objects are executed by MyCodeunit. The AL code uses the InnerException property of the System.Exception object to identify whether the inner exception has the type WebException and returns an exception message accordingly.  
   
- This example requires that you create the following variables.  
-  
-|Variable name constant|Data Type|SubType|  
-|----------------------------|---------------|-------------|  
-|MyCodeunt|Codeunit|MyCodeunit|  
-|Exception|DotNet|'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Exception|  
-|WebException|DotNet|'System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Net.WebException|  
   
 ```  
-IF NOT MyCodeunit.RUN THEN BEGIN  
-    Exception := GETLASTERROROBJECT;  
-  
-    IF NOT Exception.InnerException.GetType.Equals(WebException.GetType) THEN  
-        ERROR(Exception.Message);  
-  
-    WebException := Exception.InnerException;  
-    ERROR(WebException.Message);  
-END;  
+var
+    MyCodeunit: Codeunit MyCodeunit;
+    Exception: DotNet "'System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Net.WebException";
+    WebException: DotNet "'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'.System.Exception";
+begin
+    if not MyCodeunit.RUN then begin  
+        Exception := GETLASTERROROBJECT;  
+      
+        if not Exception.InnerException.GetType.Equals(WebException.GetType) then  
+            ERROR(Exception.Message);  
+      
+        WebException := Exception.InnerException;  
+        ERROR(WebException.Message);  
+    end;  
+end;
 ```  
 ## See Also
 [System Data Type](system-data-type.md)  

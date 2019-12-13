@@ -2,13 +2,13 @@
 title: "CopyArray Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Copies one or more elements in an array to a new array.
 
 ## Syntax
 ```
- System.CopyArray(NewArray: Array of [Any], Array: Array of [Any], Position: Integer, [Length: Integer])
+ System.CopyArray(NewArray: Array of [Any], Array: Array of [Any], Position: Integer [, Length: Integer])
 ```
 > [!NOTE]  
 > This method can be invoked without specifying the data type name.  
@@ -51,25 +51,25 @@ The number of array elements to copy. If you do not specify Length, all array el
  You cannot copy an array if the data type of the array is a complex data type. For more information about complex data types, see [AL Data Types](../../datatypes/devenv-al-data-types.md).  
 
 ## Example  
- The following example assigns values to Array1 and copies values from Array1 to Array2. Array1 is an integer array with the [Dimensions Property](../../properties/devenv-dimensions-property.md) set to 10. It contains integers from 1 to 10. The example code copies the numbers 6, 7, 8, 9, and 10 to Array2, an integer array with the **Dimensions** property set to 5. This example requires that you create the following global variables.  
-
-|Variable name|DataType|Dimension|  
-|-------------------|--------------|---------------|  
-|Array1|Integer|10|  
-|Array2|Integer|5|  
+ The following example assigns values to Array1 and copies values from Array1 to Array2. Array1 is an integer array with the [Dimensions Property](../../properties/devenv-dimensions-property.md) set to 10. It contains integers from 1 to 10. The example code copies the numbers 6, 7, 8, 9, and 10 to Array2, an integer array with the **Dimensions** property set to 5. 
 
 ```  
-Array1[1] := 1;  
-Array1[2] := 2;  
-Array1[3] := 3;  
-Array1[4] := 4;  
-Array1[5] := 5;  
-Array1[6] := 6;  
-Array1[7] := 7;  
-Array1[8] := 8;  
-Array1[9] := 9;  
-Array1[10] := 10;  
-COPYARRAY(Array2,Array1,6,5);  
+var
+    Array1: array[10] of Integer;
+    Array2: array[5] of Integer;
+begin
+    Array1[1] := 1;  
+    Array1[2] := 2;  
+    Array1[3] := 3;  
+    Array1[4] := 4;  
+    Array1[5] := 5;  
+    Array1[6] := 6;  
+    Array1[7] := 7;  
+    Array1[8] := 8;  
+    Array1[9] := 9;  
+    Array1[10] := 10;  
+    COPYARRAY(Array2,Array1,6,5);  
+end;
 ```  
 
 ## Example  

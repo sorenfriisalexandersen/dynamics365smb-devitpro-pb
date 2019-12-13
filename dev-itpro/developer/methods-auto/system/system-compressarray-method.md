@@ -2,13 +2,13 @@
 title: "CompressArray Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -54,11 +54,8 @@ The string array that you want to compress.
 ||  
 |-|  
 |Joe Raybon|  
-||  
-|One Meca Way|  
-||  
-|Atlanta|  
-||  
+|One Meca Way|   
+|Atlanta||
   
  The output StringArray has the following values.  
   
@@ -66,29 +63,24 @@ The string array that you want to compress.
 |-|  
 |Joe Raybon|  
 |One Meca Way|  
-||  
-|Atlanta|  
-||  
-||  
+|Atlanta||  
   
  All non-empty entries have been moved to the beginning of the array.  
-  
- This example requires that you create the following global variable.  
-  
-|Variable|DataType|Dimension|  
-|--------------|--------------|---------------|  
-|CustomerData|Text|6|  
-  
+ 
 ```  
-CustomerData[1] := 'Joe Raybon';  
-CustomerData[2] := ''; // Empty string.  
-CustomerData[3] :='One Meca Way';  
-CustomerData[4] := '  '; // A non-empty string that contains blanks.  
-CustomerData[5] := 'Atlanta';  
-CustomerData[6] := ''; // Empty string.  
-MESSAGE('Before compression the address is: \%1\%2\%3\%4\%5\%6', CustomerData[1], CustomerData[2], CustomerData[3], CustomerData[4], CustomerData[5], CustomerData[6]);  
-COMPRESSARRAY(CustomerData); // The empty lines (strings) are removed.  
-MESSAGE('After compression the address is: \%1\%2\%3\%4\%5\%6', CustomerData[1], CustomerData[2], CustomerData[3], CustomerData[4], CustomerData[5], CustomerData[6]);  
+var
+    CustomerData: array[6] of Text;
+begin
+    CustomerData[1] := 'Joe Raybon';  
+    CustomerData[2] := ''; // Empty string.  
+    CustomerData[3] :='One Meca Way';  
+    CustomerData[4] := '  '; // A non-empty string that contains blanks.  
+    CustomerData[5] := 'Atlanta';  
+    CustomerData[6] := ''; // Empty string.  
+    MESSAGE('Before compression the address is: \%1\%2\%3\%4\%5\%6', CustomerData[1], CustomerData[2], CustomerData[3], CustomerData[4], CustomerData[5], CustomerData[6]);  
+    COMPRESSARRAY(CustomerData); // The empty lines (strings) are removed.  
+    MESSAGE('After compression the address is: \%1\%2\%3\%4\%5\%6', CustomerData[1], CustomerData[2], CustomerData[3], CustomerData[4], CustomerData[5], CustomerData[6]);  
+end;
 ```  
   
  The first message window displays the following:  

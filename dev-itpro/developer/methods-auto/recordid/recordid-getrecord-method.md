@@ -2,13 +2,13 @@
 title: "GetRecord Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -39,12 +39,13 @@ The RecordRef of the record.
  No data is read from the database when you run this method and therefore, no other fields in the record are set. Furthermore, no filters are set on the record.
 
 ## Example  
- The following example opens table number 18 \(Customer table\) and sets a reference to the table. The [FINDLAST Method \(RecordRef\)](../../methods/devenv-findlast-method-recordref.md) selects the last record in the table. The [RECORDID Method \(RecordRef\)](../../methods/devenv-recordid-method-recordref.md) retrieves the ID of the currently selected record. In this case, it is the last record in the table. The [GETRECORD Method \(RECORDID\)](../../methods/devenv-getrecord-method-recordid.md) uses the retrieved record ID to determine the RecordRef of the selected record \(the last record\). This example requires that you create the following global variables and text constant.  
+ The following example opens table number 18 \(Customer table\) and sets a reference to the table. The [FINDLAST Method \(RecordRef\)](../recordref/recordref-findlast-method.md) selects the last record in the table. The [RECORDID Method \(RecordRef\)](../recordref/recordref-recordid-method.md) retrieves the ID of the currently selected record. In this case, it is the last record in the table. The [GETRECORD Method \(RECORDID\)](../recordid/recordid-getrecord-method.md) uses the retrieved record ID to determine the RecordRef of the selected record \(the last record\). This example requires that you create the following global variables and text constant.  
 
-|Variable name|DataType|  
-|-------------------|--------------|  
-|RecRef|RecordRef|  
-|RecID|RecordID|  
+```
+var
+    RecRef: RecordRef;
+    RecID: RecordID;
+```
 
 ```  
 

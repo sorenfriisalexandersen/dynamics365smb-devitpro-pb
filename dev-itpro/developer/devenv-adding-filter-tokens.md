@@ -1,7 +1,7 @@
 ---
 title: "Adding custom filter tokens"
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -71,4 +71,4 @@ This example extends the application with a new token word "%mysalesperson" repr
 -->
 
 ## See Also 
-[Sorting, Searching and Filtering Lists](https://docs.microsoft.com/en-us/dynamics365/business-central/ui-enter-criteria-filters)
+[Sorting, Searching and Filtering Lists](/dynamics365/business-central/ui-enter-criteria-filters)

@@ -1,7 +1,7 @@
 ---
 title: "How to: Use PerfView to Collect Event Trace Data"
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -9,13 +9,14 @@ ms.topic: article
 ms.service: "dynamics365-business-central"
 ms.assetid: 0a53dde8-c139-46d0-a13c-56391eed7f95
 caps.latest.revision: 14
+author: SusanneWindfeldPedersen
 ---
 # How to: Use PerfView to Collect Event Trace Data
 This topic describes how to use PerfView to collect event trace data for [!INCLUDE[server](../developer/includes/server.md)]. When you collect event trace data, the data is stored in an event trace log \(.etl\) file in a location that you choose.  
   
 ### To install PerfView  
   
--   Go to [http://go.microsoft.com/fwlink/?LinkID=313428](http://go.microsoft.com/fwlink/?LinkID=313428), and then follow the instructions to download and install PerfView.  
+-   Go to [https://go.microsoft.com/fwlink/?LinkID=313428](https://go.microsoft.com/fwlink/?LinkID=313428), and then follow the instructions to download and install PerfView.  
   
 ### To collect event trace data  
   

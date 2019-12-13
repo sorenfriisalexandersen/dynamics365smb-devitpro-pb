@@ -1,7 +1,7 @@
 ---
 title: "MethodType Property"
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -12,10 +12,12 @@ caps.latest.revision: 9
 author: SusanneWindfeldPedersen
 ---
 
- 
-
 # MethodType Property
+
+[!INCLUDE[cal_only](../includes/cal_only.md)]
+
 Sets a date or totals type method on the query column. The method is applied by the [Method Property](devenv-method-property.md).  
+
   
 ## Applies to  
  Query columns  

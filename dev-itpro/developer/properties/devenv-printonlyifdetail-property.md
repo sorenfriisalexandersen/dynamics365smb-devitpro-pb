@@ -1,18 +1,14 @@
 ---
 title: "PrintOnlyIfDetail Property"
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-ms.assetid: c789cb47-8bd3-4764-8517-6f9390000313
-caps.latest.revision: 9
 author: SusanneWindfeldPedersen
 ---
-
- 
 
 # PrintOnlyIfDetail Property
 Specifies whether to print data in a report for the parent data item when the child data item does not generate any output.  
@@ -33,7 +29,7 @@ PrintOnlyIfDetail = true;
   
  If there are more than two data items, then the report iterates through each parent-child relationship in the same way.  
   
- Another way to achieve the result of not printing blank lines is to add a filter on the table. For more information, see [SETFILTER Function (Record)](../methods/devenv-SETFILTER-Method-Record.md).  
+ Another way to achieve the result of not printing blank lines is to add a filter on the table. For more information, see [SETFILTER Function (Record)](../methods-auto/record/record-SETFILTER-Method.md).  
   
  In previous versions of [!INCLUDE[d365fin_long_md](../includes/d365fin_long_md.md)] reports, you could control whether data items without data were printed with the use of body sections in Section Designer. After you upgrade reports in [!INCLUDE[d365fin_long_md](../includes/d365fin_long_md.md)], verify whether you need to use filters or the **PrintOnlyIfDetail** property to achieve the same resulting report.  
   
@@ -78,4 +74,4 @@ PrintOnlyIfDetail = true;
 |Order|10000|101016||…|  
   
 ## See Also  
- [PRINTONLYIFDETAIL Method (Report)](../methods/devenv-printonlyifdetail-method-report.md)
+ [PRINTONLYIFDETAIL Method (Report)](../methods-auto/report/reportinstance-printonlyifdetail-method.md)

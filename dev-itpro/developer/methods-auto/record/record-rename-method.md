@@ -1,14 +1,14 @@
 ---
 title: "Rename Method"
-ms.author: solsen
+ms.author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 06/25/2019
+ms.date: 11/14/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Changes the value of a primary key in a table.
 
 ## Syntax
 ```
-[Ok := ]  Record.Rename(Value1: Any, [Value2: Any,...])
+[Ok := ]  Record.Rename(Value1: Any [, Value2: Any,...])
 ```
 ## Parameters
 *Record*  

@@ -2,7 +2,7 @@
 title: Web Client Configuration for Tenants
 description: To deploy the Dynamics NAV Web Client in a multitenant development architecture, URLs must specify the tenant ID to access a specific tenant.
 ms.custom: na
-ms.date: 05/06/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -10,6 +10,7 @@ ms.topic: article
 ms.service: "dynamics365-business-central"
 ms.assetid: eb87ee8c-be21-4fed-a5f7-2229c4101c61
 caps.latest.revision: 6
+author: SusanneWindfeldPedersen
 ---
 # Configuring [!INCLUDE[webserver](../developer/includes/webserver.md)] to Accept Host Names for Tenants
 

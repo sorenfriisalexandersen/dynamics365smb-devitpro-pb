@@ -2,16 +2,18 @@
 title: Install a cumulative update
 description: This article describes the tasks required for getting the monthly cumulative update applied to your Dynamics 365 Business Central on-premises.
 ms.custom: na
-ms.date: 08/20/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.author: jswymer
 ms.service: "dynamics365-business-central"
+author: jswymer
 ---
-# Installing a [!INCLUDE[prodshort](../developer/includes/prodshort.md)] Cumulative Update
-This article describes how to install a cumulative update for[!INCLUDE[prodshort](../developer/includes/prodshort.md)] on-premises. A cumulative update is a cumulative set of files that includes all hotfixes and regulatory features that have been released for Business Central.
+# Installing a [!INCLUDE[prodshort](../developer/includes/prodshort.md)] Spring 2019 Cumulative Update
+
+This article describes how to install a cumulative update for [!INCLUDE[prodshort](../developer/includes/prodshort.md)] on-premises. A cumulative update is a cumulative set of files that includes all hotfixes and regulatory features that have been released for Business Central.
 
 ## Download the cumulative update package
 
@@ -20,11 +22,10 @@ The first thing to do is to download the Cumulative Update package that matches 
 1. Go to the relevant list of available updates for your on-premises version of Business Central, and then choose the Cumulative Update that you want.
 
     For a list of supported versions of Business Central on-premises, see the [See Also](#see-also) section.
-2. From the cumulative update page, under the **Release** section, select the link for downloading the update and follow the instructions.
+2. From the cumulative update page, under the **Resolution** section, select the link for downloading the update and follow the instructions.
 3. On the computer where you downloaded cumulative update, extract files from all .zip files.
 
 The cumulative update includes files that are separated into the following folders:
-
 - APPLICATION folder
   
     Used for updating your application with the new or modified application objects that comprise the cumulative update.
@@ -40,12 +41,19 @@ The following components are part of the [!INCLUDE[prodshort](../developer/inclu
 
 - [!INCLUDE[webserver](../developer/includes/webserver.md)]
 - [!INCLUDE[server](../developer/includes/server.md)]
+- SQL Server components
 - [!INCLUDE[nav_windows_md](../developer/includes/nav_windows_md.md)]
 
 To upgrade to the latest platform the database must be converted by using the Dynamics NAV Development Environment.
 
-1. Uninstall the current Business Central components.
-2. Install Business Central components of the cumulative update.
+1. (Single-tenant deployment only) Uninstall all extensions. 
+
+    If the [!INCLUDE[server](../developer/includes/server.md)] is configured as a single-tenant instance, you must uninstall all extensions from tenant. For example, using the [Uninstall-NAVApp cmdlet](/powershell/module/microsoft.dynamics.nav.apps.management/uninstall-navapp) from the [!INCLUDE[adminshell](../developer/includes/adminshell.md)], you can run the following command:
+
+    ```
+    Get-NAVAppInfo -ServerInstance <ServerInstanceName> -Tenant default | % { Uninstall-NAVApp -ServerInstance <ServerInstanceName> -Name $_.Name -Version $_.Version }
+    ``` 
+1. Install Business Central components of the cumulative update.
 
     From the DVD folder, run setup.exe to install Business Central. As a minimum, install the following components: Server, Web Server Components, SQL Server Components, and the Dynamics NAV Development Environment. For more information, see [Installing Business Central Using Setup](../deployment/install-using-setup.md).
 3. Start the new [!INCLUDE[nav_dev_short_md](../developer/includes/nav_dev_short_md.md)] as an administrator
@@ -105,15 +113,11 @@ Make sure you synchronize the tenant after you delete the objects.
 
 ### Set the application version of database to the application version of the cumulative update
 
-You must increase the application version of the application database in order to perform a data upgrade. We recommend that you change to the application version to that of the cumulative update. You can get this version from the cumulative update release page. The application version has the format: `Major.CU.ApplicationBuild.Revision`, where:
-- `Major`is the major version of [!INCLUDE[prodshort](../developer/includes/prodshort.md)]. For [!INCLUDE[prodshort](../developer/includes/prodshort.md)] October 2018, this is `13`. For [!INCLUDE[prodshort](../developer/includes/prodshort.md)] April 2019, this is `14`.
-- `CU` is the cumulative update number, such as 7 or 10.
-- `ApplicationBuild` is the five digit application build number, such as 24279.
-- `Revision` can be set to 0.
+You must increase the application version of the application database in order to perform a data upgrade. We recommend that you change to the application version to that of the cumulative update. You can get this version from the cumulative update release page. For more information, see [Version numbers in Business Central](../administration/version-numbers.md).  
 
-To set the application version, use the [Set-NAVApplication](https://docs.microsoft.com/en-us/powershell/module/microsoft.dynamics.nav.management/set-navapplication) cmdlet of the [!INCLUDE[adminshell](../developer/includes/adminshell.md)] to set the application version as follows:
+To set the application version, use the [Set-NAVApplication](/powershell/module/microsoft.dynamics.nav.management/set-navapplication) cmdlet of the [!INCLUDE[adminshell](../developer/includes/adminshell.md)] to set the application version as follows:
 
-```
+```powershell
 Set-NAVApplication -ServerInstance <ServerInstanceName> -ApplicationVersion Major.CU.ApplicationBuild.Revision -Force
 ```
 
@@ -126,9 +130,9 @@ Set-NAVApplication -ServerInstance <ServerInstanceName> -ApplicationVersion Majo
 
 3. Run a data upgrade.
 
-    Run [Start-NavDataUpgrade](https://docs.microsoft.com/en-us/powershell/module/microsoft.dynamics.nav.management/start-navdataupgrade) cmdlet of the [!INCLUDE[adminshell](../developer/includes/adminshell.md)]:
+    Run [Start-NavDataUpgrade](/powershell/module/microsoft.dynamics.nav.management/start-navdataupgrade) cmdlet of the [!INCLUDE[adminshell](../developer/includes/adminshell.md)]:
     
-    ```  
+    ```powershell
     Start-NavDataUpgrade -ServerInstance <ServerInstanceName> -Tenant <TenantID>
     ```
 
@@ -175,4 +179,5 @@ The general steps for this task are listed below. For detailed steps, see [Publi
 [Upgrading the Application Code](Upgrading-the-Application-Code.md)  
 [Upgrading to Business Central](upgrading-to-business-central.md)  
 [Synchronizing the Tenant Database and Application Database](../administration/synchronize-tenant-database-and-application-database.md)  
+[Version numbers in Business Central](../administration/version-numbers.md)  
 [Publish and Install an Extension](../developer/devenv-how-publish-and-install-an-extension-v2.md)  

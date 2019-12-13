@@ -2,13 +2,13 @@
 title: "CreateTask Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 05/23/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Adds a task to ensure that a codeunit is not run before the specified time.
 
 ## Syntax
 ```
-[Task := ]  TaskScheduler.CreateTask(CodeunitId: Integer, FailureCodeunitId: Integer, [IsReady: Boolean], [Company: String], [NotBefore: DateTime], [RecordID: RecordId])
+[Task := ]  TaskScheduler.CreateTask(CodeunitId: Integer, FailureCodeunitId: Integer [, IsReady: Boolean] [, Company: String] [, NotBefore: DateTime] [, RecordID: RecordId])
 ```
 ## Parameters
 *CodeunitId*  
@@ -57,23 +57,21 @@ Specifies the recordID of the record that you want to run the task on.
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
 
 ## Remarks  
- Scheduled tasks are recorded in table **2000000175 Scheduled Task**.  For more information about tasks and task scheduler, see managing tasks [Task Scheduler](../../devenv-task-scheduler.md).  
+Scheduled tasks are recorded in table **2000000175 Scheduled Task**.  For more information about tasks and task scheduler, see managing tasks [Task Scheduler](../../devenv-task-scheduler.md).  
 
 ## Example  
- The following example schedules a task to run the **Job Queue Dispatcher** and uses codeunit **Job Queue Error Handler** as the failure codeunit. The code requires that you create the following AL variable.  
-
-|Variable|DataType|SubType|  
-|--------------|--------------|-------------|  
-|JobQueueEntry|Record|Job Queue Entry|  
+The following example schedules a task to run the **Job Queue Dispatcher** and uses codeunit **Job Queue Error Handler** as the failure codeunit. 
 
 ```  
-TASKSCHEDULER.CREATETASK(CODEUNIT::"Job Queue Dispatcher", CODEUNIT::"Job Queue Error Handler", TRUE, COMPANYNAME, CURRENTDATETIME + 1000 + RANDOM(3000), JobQueueEntry.RECORDID);  
+var
+    JobQueueEntry: Record "Job Queue Entry";
+begin
+    TASKSCHEDULER.CREATETASK(CODEUNIT::"Job Queue Dispatcher", CODEUNIT::"Job Queue Error Handler", TRUE, COMPANYNAME, CURRENTDATETIME + 1000 + RANDOM(3000), JobQueueEntry.RECORDID);  
+end;
 ```  
-
- To see this code in use, you can look at the AL code in codeunit **448 Job Queue Dispatcher** in the [!INCLUDE[demolong](../../includes/demolong_md.md)].  
 
 
 ## See Also
 [TaskScheduler Data Type](taskscheduler-data-type.md)  
 [Getting Started with AL](../../devenv-get-started.md)  
-[Developing Extensions](../../devenv-dev-overview.md)
+[Developing Extensions](../../devenv-dev-overview.md)  

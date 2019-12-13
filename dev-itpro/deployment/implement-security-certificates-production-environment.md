@@ -1,12 +1,13 @@
 ---
 title: "Using Security Certificates with Business Central On-Premises"
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
+author: jswymer
 ---
 # Using Security Certificates with Business Central On-Premises
 
@@ -35,7 +36,7 @@ In a production environment, you should obtain a certificate from a certificatio
   
 ###  <a name="AboutProdCerts"></a> Obtaining Certificates
 
-You implement chain trust by obtaining X.509 service certificates from a trusted provider. These certificates and their root certification authority \(CA\) certificates must be installed in the certificates store on the computer that is running [!INCLUDE[nav_server](../developer/includes/nav_server_md.md)]. The CA certificate must also be installed in the certificate store on computers that are running the [!INCLUDE[webserver](../developer/includes/webserver.md)] and [!INCLUDE[nav_windows_md](../developer/includes/nav_windows_md.md)] so that clients can validate the server.  
+You implement chain trust by obtaining X.509 service certificates from a trusted provider. These certificates and their root certification authority \(CA\) certificates must be installed in the certificates store on the computer that is running [!INCLUDE[server](../developer/includes/server.md)]. The CA certificate must also be installed in the certificate store on computers that are running the [!INCLUDE[webserver](../developer/includes/webserver.md)] and [!INCLUDE[nav_windows_md](../developer/includes/nav_windows_md.md)] so that clients can validate the server.  
   
 Most enterprises and hosting providers have their own infrastructure for issuing and managing certificates. You can also use these certificate infrastructures. The only requirement is that the service certificates must be set up for key exchange and therefore must contain both private and public keys. Additionally, the service certificates that are installed on [!INCLUDE[server](../developer/includes/server.md)] instances must have the Service Authentication and Client Authentication certificate purposes enabled.  
 
@@ -45,7 +46,7 @@ Most enterprises and hosting providers have their own infrastructure for issuing
   
 ## Run the Certificates Snap-in for Microsoft Management Console
   
-Some of the following procedures use the Certificates snap-in for Microsoft Management Console \(MMC\). If you do not already have this snap-in installed, you can add it to the MMC. For information see [Add the Certificates Snap-in to an MMC](http://go.microsoft.com/fwlink/?LinkID=699497).  
+Some of the following procedures use the Certificates snap-in for Microsoft Management Console \(MMC\). If you do not already have this snap-in installed, you can add it to the MMC. For information see [Add the Certificates Snap-in to an MMC](https://go.microsoft.com/fwlink/?LinkID=699497).  
   
 ## Install and Configure the Certificates
   
@@ -62,7 +63,7 @@ You install the security certificates on the computers running [!INCLUDE[server]
   
     A certificate can be enabled for several different purposes. The **Server Authentication** and **Client Authentication** purposes must be enabled. You can enable or disable other purposes to suit your requirements.  
   
-    You enable certificate purposes by using the Certificates Snap-in for MMC. For more information, see [Modify the Properties of a Certificate](http://go.microsoft.com/fwlink/?LinkID=699496).  
+    You enable certificate purposes by using the Certificates Snap-in for MMC. For more information, see [Modify the Properties of a Certificate](https://go.microsoft.com/fwlink/?LinkID=699496).  
 
 ###  Grant access to the [!INCLUDE[server](../developer/includes/server.md)] service account
 After you have installed the root CA and the service certificate on the computer running [!INCLUDE[server](../developer/includes/server.md)], you must grant access to the service account that is associated with the server so that the service account can access the service certificate’s private key.

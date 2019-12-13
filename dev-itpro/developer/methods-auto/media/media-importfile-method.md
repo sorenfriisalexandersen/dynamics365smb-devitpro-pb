@@ -2,13 +2,13 @@
 title: "ImportFile Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -21,7 +21,7 @@ Adds a media type, such as a JPEG image, from a file to a Media data type field 
 
 ## Syntax
 ```
-[ID := ]  Media.ImportFile(Filename: Text, Description: Text, [MimeType: Text])
+[ID := ]  Media.ImportFile(Filename: Text, Description: Text [, MimeType: Text])
 ```
 ## Parameters
 *Media*  
@@ -40,10 +40,12 @@ Specifies text that can be used in the client to describe the media.
 &emsp;Type: [Text](../text/text-data-type.md)  
 Specifies the media content type. MIME type is used by browsers, and is an Internet standard to describe the contents of a file. The MimeType value must be a two-part string that consists of a type and subtype, such as image/jpeg or image/gif. If this parameter is not specified, the function will deduct the MIME type from the file extension. For example the MIME type for a .jpg file is image/jpeg.  
 
+
 ## Return Value
 *ID*  
 &emsp;Type: [Guid](../guid/guid-data-type.md)  
-The unique ID that is assigned to the media object in the database. You can also get the ID by using the MediaId method.If you omit this optional return value and the operation does not execute successfully, a runtime error will occur.
+The unique ID that is assigned to the media object in the database. You can also get the ID by using the MediaId method.If you omit this optional return value and the operation does not execute successfully, a runtime error will occur.    
+
 
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
 
@@ -90,28 +92,23 @@ With the objects in place, you can add and run the following AL code to import t
 
 The example code iterates over records in the **My Items** table. For each record, it looks in the *C:\images* folder for a file whose name matches the **No.** field of the record. If there is a match, the file is imported and a message appears; otherwise, nothing happens.
 
-The code requires that you create the following variable and text constant:
-
-|  Variable name  |  DataType  |  Subtype  |
-|-----------------|------------|-----------|
-|  myItemRec  |  Record  |  My Items  |
-|  fileName  |  Text  |  |
-|  imageID  |  GUID  |  |
-
-|Text constant name|ConstValue|
-|-------------------|--------------|
-|Text000|An image with the following ID has been imported on item %1: %2|
-
 ```
-if myItemRec.FindFirst() then begin
-    repeat begin
-        fileName := 'C:\images\' + Format(myItemRec."No.") + '.jpg';
-        if File.Exists(fileName) then begin
-          imageID := myItemRec.Image.ImportFile(fileName, 'Demo image for item ' + Format(myItemRec."No."));
-          myItemRec.Modify;
-          Message(Text000, myItemRec."No.", imageID)
-        end;
-    end until myItemRec.Next < 1;
+ var
+    myItemRec: Record "My Items";
+    fileName: Text;
+    imageID: GUID;
+    Text000: Label 'An image with the following ID has been imported on item %1: %2';
+begin
+    if myItemRec.FindFirst() then begin
+        repeat begin
+            fileName := 'C:\images\' + Format(myItemRec."No.") + '.jpg';
+            if File.Exists(fileName) then begin
+              imageID := myItemRec.Image.ImportFile(fileName, 'Demo image for item ' + Format(myItemRec."No."));
+              myItemRec.Modify;
+              Message(Text000, myItemRec."No.", imageID)
+            end;
+        end until myItemRec.Next < 1;
+    end;
 end;
 ```
 

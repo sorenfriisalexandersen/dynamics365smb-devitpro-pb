@@ -2,13 +2,13 @@
 title: "Write Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Writes a specified number of bytes to the stream. Data is written in binary form
 
 ## Syntax
 ```
-[Written := ]  OutStream.Write(Value: Decimal, [Length: Integer])
+[Written := ]  OutStream.Write(Value: Decimal [, Length: Integer])
 ```
 ## Parameters
 *OutStream*  
@@ -52,15 +52,19 @@ WRITE adds a zero byte at the end of the stream. This is differs from WRITETEXT,
   
 ## Example  
   
-```  
-recBinaries.FIND('-');  
-recBinaries.Data.CREATEOUTSTREAM(OutStream);  
-OutStream.WRITE('Secretary');  
-OutStream.WRITE('Alice');  
-OutStream.WRITE('Hart');  
-OutStream.WRITE(010696D);  
-recBinaries.MODIFY();  
-```  
+This example requires that you create the following variables.  
+  
+```
+ var
+    recBinaries: Record "Company Information";
+    OStream: OutStream;
+begin 
+    recBinaries.FIND('-');  
+    recBinaries.Picture.CREATEOUTSTREAM(OStream);   
+    OStream.WRITE(0.33);  
+    recBinaries.MODIFY();  
+end;
+```    
   
 ## See Also
 [OutStream Data Type](outstream-data-type.md)  

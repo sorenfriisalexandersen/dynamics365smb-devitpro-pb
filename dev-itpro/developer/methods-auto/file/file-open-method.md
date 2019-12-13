@@ -2,13 +2,13 @@
 title: "Open Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/10/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -21,7 +21,7 @@ Opens an ASCII or binary file. This method does not create the file if it does n
 
 ## Syntax
 ```
-[Ok := ]  File.Open(Name: String, [Encoding: TextEncoding])
+[Ok := ]  File.Open(Name: String [, Encoding: TextEncoding])
 ```
 > [!NOTE]  
 > This method can be invoked without specifying the data type name.  
@@ -51,10 +51,11 @@ An instance of the [File](file-data-type.md) data type.
   
 ## Example  
  This example shows how to open an .xml file for reading in text mode. To use this example, you must create the simple.xml file at C:\\temp and create the following variable.  
-  
-|Variable|DataType|  
-|--------------|--------------|  
-|TestFile|File|  
+
+ ```
+ var
+    TestFile: File;
+```
   
 ```  
 TestFile.TEXTMODE(TRUE);  

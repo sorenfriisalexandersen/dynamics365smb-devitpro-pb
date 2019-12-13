@@ -2,13 +2,13 @@
 title: "UploadIntoStream Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/10/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -71,16 +71,14 @@ The business logic runs on the [!INCLUDE[d365fin_server_md](../../includes/d365f
  We recommend that you use the methods in codeunit 419, File Management, to upload and download files.  
 
 ## Example  
- This example requires that you create the following variables.  
-
-|Name|DataType|  
-|----------|--------------|  
-|FileName|Text|  
-|NVInStream|InStream|  
-
-```  
-FileName := 'c:\SomeFile.txt';  
-UPLOADINTOSTREAM('Import','',' All Files (*.*)|*.*',FileName,NVInStream);  
+ ```
+ var
+    FileName: Text;
+    NVInStream: InStream;
+begin
+    FileName := 'c:\SomeFile.txt';  
+    UPLOADINTOSTREAM('Import','',' All Files (*.*)|*.*',FileName,NVInStream); 
+end;
 ```  
 
 

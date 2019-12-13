@@ -2,13 +2,13 @@
 title: "Next Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -44,10 +44,10 @@ An instance of the [TestPage](testpage-data-type.md) data type.
 ```  
 CustomerList.OPENVIEW;  
 // Loops through all customers and displays the customer name.  
-IF CustomerList.FIRST THEN  
-  REPEAT  
-    MESSAGE(CustomerList.Name);  
-UNTIL NOT CustomerList.NEXT;  
+if CustomerList.FIRST then  
+  repeat  
+    MESSAGE('%1';CustomerList.Name);  
+until not CustomerList.NEXT;  
   
 ```
 

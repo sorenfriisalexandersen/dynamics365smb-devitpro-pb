@@ -2,13 +2,13 @@
 title: "Date2DMY Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/09/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -42,25 +42,22 @@ The input date.
 
 
 ## Example  
- This example shows how to use the **DATE2DMY** method. This code example requires that you create the following global variables and text constants.  
-  
-|Name|DataType|  
-|----------|--------------|  
-|InputDate|Date|  
-|Day|Integer|  
-|Month|Integer|  
-|Year|Integer|  
-  
-|Name|ConstValue|  
-|----------|----------------|  
-|Text000|Today is day %1 of month %2 of the year %3.|  
-  
+ This example shows how to use the **DATE2DMY** method.
+ 
 ```  
-InputDate := TODAY;  
-Day := DATE2DMY(InputDate,1);  
-Month := DATE2DMY(InputDate,2);  
-Year := DATE2DMY(InputDate,3);  
-MESSAGE(Text000,Day,Month,Year);  
+var
+    InputDate: Date;
+    Day: Integer;
+    Month: Integer;
+    Year: Integer;
+    Text000: Label 'Today is day %1 of month %2 of the year %3.';
+begin
+    InputDate := TODAY;  
+    Day := DATE2DMY(InputDate,1);  
+    Month := DATE2DMY(InputDate,2);  
+    Year := DATE2DMY(InputDate,3);  
+    MESSAGE(Text000,Day,Month,Year); 
+end; 
 ```  
   
  The message window displays the following:  

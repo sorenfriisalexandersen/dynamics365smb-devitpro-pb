@@ -2,13 +2,13 @@
 title: "StrSubstNo Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Replaces %1, %2, %3... and #1, #2, #3... fields in a string with the values you 
 
 ## Syntax
 ```
-NewString :=   Text.StrSubstNo(String: String, [Value1: Any,...])
+NewString :=   Text.StrSubstNo(String: String [, Value1: Any,...])
 ```
 > [!NOTE]  
 > This method can be invoked without specifying the data type name.  
@@ -85,27 +85,22 @@ Returns a new string with the provided values inserted into the specified string
 ## Example  
  The following example shows how to use the STRSUBSTNO method.  
   
- This example requires that you create the following global variables and text constants.  
-  
-|Variable name|Data type|Length|  
-|-------------------|---------------|------------|  
-|Str|Text|1024|  
-|AccountNo|Integer|Not applicable|  
-|Balance|Decimal|Not applicable|  
-  
-|Text constant|ENU value|  
-|-------------------|---------------|  
-|Text000|The balance of account %1 is $ %2|  
-|Text001|The string before STRSUBSTNO has been called:\\%1|  
-|Text002|The string after STRSUBSTNO has been called:\\%1|  
-  
 ```  
-Str := Text000;  
-AccountNo := 3452;   
-Balance := 2345 + 5462;  
-MESSAGE(Text001, Str);  
-Str := STRSUBSTNO(Str, AccountNo, Balance);  
-MESSAGE(Text002, Str);  
+var
+    Str: Text[1024];
+    AccountNo: Integer;
+    Balance: Decimal;
+    Text000: Label 'The balance of account %1 is $ %2';  
+    Text001: Label 'The test string before STRSUBSTNO is called:\\%1';  
+    Text002: Label 'The string after STRSUBSTNO is called:\\%1';  
+begin
+    Str := Text000;  
+    AccountNo := 3452;   
+    Balance := 2345 + 5462;  
+    MESSAGE(Text001, Str);  
+    Str := STRSUBSTNO(Str, AccountNo, Balance);  
+    MESSAGE(Text002, Str);  
+end;
 ```  
   
  The first message window displays the following text:  

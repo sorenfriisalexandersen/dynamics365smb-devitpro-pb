@@ -2,13 +2,13 @@
 title: "Rename Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/09/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Changes the value of a primary key in a table.
 
 ## Syntax
 ```
-[Ok := ]  RecordRef.Rename(Value1: Any, [Value2: Any,...])
+[Ok := ]  RecordRef.Rename(Value1: Any [, Value2: Any,...])
 ```
 ## Parameters
 *RecordRef*  
@@ -28,8 +28,7 @@ An instance of the [RecordRef](recordref-data-type.md) data type.
 
 *Value1*  
 &emsp;Type: [Any](../any/any-data-type.md)  
-The new values for the primary key.
-        
+The new values for the primary key.  
 *Value2*  
 &emsp;Type: [Any](../any/any-data-type.md)  
 The new values for the primary key.  
@@ -66,40 +65,40 @@ The new values for the primary key.
   
  **Enter your changes again in the updated window, or start the interrupted activity again.**  
   
- In earlier versions of [!INCLUDE[d365fin_md](../../includes/d365fin_md.md)], certain situations allowed code that an end-user runs to modify a record after a newer version of the record was written and committed to the database. This would overwrite the newer changes. However, in [!INCLUDE[d365fin_long_md](../../includes/d365fin_long_md.md)], we have restricted the [MODIFY Method \(RecordRef\)](../../methods/devenv-modify-method-recordref.md), **RENAME** Method \(RecordRef\), and [DELETE Method \(RecordRef\)](../../methods/devenv-delete-method-recordref.md) so that the end-user receives the following run-time error in these certain situations:  
+ In earlier versions of [!INCLUDE[d365fin_md](../../includes/d365fin_md.md)], certain situations allowed code that an end-user runs to modify a record after a newer version of the record was written and committed to the database. This would overwrite the newer changes. However, in [!INCLUDE[d365fin_long_md](../../includes/d365fin_long_md.md)], we have restricted the [MODIFY Method \(RecordRef\)](recordref-modify-method.md), **RENAME** Method \(RecordRef\), and [DELETE Method \(RecordRef\)](recordref-delete-method.md) so that the end-user receives the following run-time error in these certain situations:  
   
  **Unable to change an earlier version of the \<Table Name> record. The record should be read from the database again. This is a programming error.**  
   
- You must design your application so that you use the most up-to-date version of the record for modifications to the database. You use the [GET Method \(RecordRef\)](../../methods/devenv-get-method-recordref.md) to refresh the record with the latest version.  
+ You must design your application so that you use the most up-to-date version of the record for modifications to the database. You use the [GET Method \(RecordRef\)](recordref-get-method.md) to refresh the record with the latest version.  
   
 ## Example  
- This example shows how to change the value of the primary key of a Record variable, and how to change the value of the primary key of a RecordRef variable. This example requires that you create the following global variables.  
-  
-|Variable name|DataType|Subtype|  
-|-------------------|--------------|-------------|  
-|CustomerRec|Record|Customer|  
-|NewNo1|Code|Not applicable|  
-|NewNo2|Code|Not applicable|  
-|result|Boolean|Not applicable|  
-|CustomerRecRef|RecordRef|Not applicable|  
-  
+ This example shows how to change the value of the primary key of a Record variable, and how to change the value of the primary key of a RecordRef variable. 
+ 
 ```  
-CustomerRec.GET('0112121');  
-NewNo1 := ‘9999999’;  
-NewNo2 := ‘8888888’;  
-MESSAGE('Customer name: %1; Customer number: %2',CustomerRec.Name, CustomerRec."No.");  
-result := CustomerRec.RENAME(NewNo1);  
-IF result THEN  
-  MESSAGE('After rename - Customer name: %1; Customer number: %2',CustomerRec.Name, CustomerRec."No.")  
-ELSE  
-  MESSAGE('No rename.');  
-CustRecRef.GETTABLE(CustomerRec);  
-result := CustRecRef.RENAME(NewNo2);  
-IF result THEN BEGIN  
-  CustomerRec.GET(NewNo2);  
-  MESSAGE('After rename 2 - Customer name: %1; Customer number: %2',CustomerRec.Name, CustomerRec."No.")  
-END ELSE  
-  MESSAGE('No rename.');  
+var
+    CustomerRecRef: RecordRef;
+    NewNo1: Code;
+    NewNo2: Code;
+    result: Boolean;
+    CustomerRec: Record Cutomer;
+begin 
+    CustomerRec.GET('0112121');  
+    NewNo1 := ‘9999999’;  
+    NewNo2 := ‘8888888’;  
+    MESSAGE('Customer name: %1; Customer number: %2',CustomerRec.Name, CustomerRec."No.");  
+    result := CustomerRec.RENAME(NewNo1);  
+    if result then  
+      MESSAGE('After rename - Customer name: %1; Customer number: %2',CustomerRec.Name, CustomerRec."No.")  
+    else  
+      MESSAGE('No rename.');  
+    CustRecRef.GETTABLE(CustomerRec);  
+    result := CustRecRef.RENAME(NewNo2);  
+    if result then begin  
+      CustomerRec.GET(NewNo2);  
+      MESSAGE('After rename 2 - Customer name: %1; Customer number: %2',CustomerRec.Name, CustomerRec."No.")  
+    end else  
+      MESSAGE('No rename.');  
+end;
 ```  
   
  If a record with No. 0112121 is found, and if the renames are successful, then the following messages are displayed:  

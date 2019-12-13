@@ -1,23 +1,23 @@
 ---
-title: "Key fields cannot be changed."
-ms.author: solsen
+title: "Key fields must not be changed"
+ms.author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 12/10/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
-[//]: # (Any modifications should be made in the .xml or .resx files in the ModernDev repo.)
+[//]: # (Any modifications should be made in the .xml files in the ModernDev repo.)
 # AppSourceCop Rule AS0009
-Key fields cannot be changed.  
+Key fields must not be changed  
 
 ## Description
-Key fields cannot be changed.
+Key fields must not be changed.
 
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
 ## See Also  

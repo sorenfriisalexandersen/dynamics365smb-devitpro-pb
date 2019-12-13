@@ -2,7 +2,7 @@
 title: Creating and Altering Business Central Databases
 description: Create a new database in the development environment and by using the New-NAVDatabase cmdlet in the Administration Shell. 
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -11,11 +11,12 @@ ms.service: "dynamics365-business-central"
 author: jswymer
 ---
 # Creating and Altering [!INCLUDE[prodshort](../developer/includes/prodshort.md)] Databases
-You can create new [!INCLUDE[prodshort](../developer/includes/prodshort.md)] databases in the [!INCLUDE[nav_dev_long_md](../developer/includes/nav_dev_long_md.md)] and by using the [New-NAVDatabase](http://go.microsoft.com/fwlink/?LinkID=401374) cmdlet in the [!INCLUDE[devshell](../developer/includes/devshell.md)].  
+You can create new [!INCLUDE[prodshort](../developer/includes/prodshort.md)] databases in the [!INCLUDE[nav_dev_long_md](../developer/includes/nav_dev_long_md.md)] and by using the [New-NAVDatabase](https://go.microsoft.com/fwlink/?LinkID=401374) cmdlet in the [!INCLUDE[devshell](../developer/includes/devshell.md)].  
+
+>[!NOTE]
+> [!INCLUDE[nav_dev_long_md](../developer/includes/nav_dev_long_md.md)] is [!INCLUDE[2019_releasewave2_deprecated](../includes/2019_releasewave2_deprecated.md)].
 
 When you create a database you must specify the SQL Server instance for the database and the authentication type.  
-
-
 
 <!-- 
 ### To download symbols
@@ -23,7 +24,7 @@ When you create a database you must specify the SQL Server instance for the data
 
 Before you create a database, you must make sure to download symbols first.
 
-1. Download the [platform symbols](https://go.microsoft.com/fwlink/?linkid=864045), the [test symbols](http://download.microsoft.com/download/C/7/9/C79AF269-A67E-4EEF-B9F2-52FAFA43E026/Microsoft_Test_11.0.19680.0.app), and the [application symbols](http://download.microsoft.com/download/C/7/9/C79AF269-A67E-4EEF-B9F2-52FAFA43E026/Microsoft_Application_11.0.19738.0.app).  
+1. Download the [platform symbols](https://go.microsoft.com/fwlink/?linkid=864045), the [test symbols](https://download.microsoft.com/download/C/7/9/C79AF269-A67E-4EEF-B9F2-52FAFA43E026/Microsoft_Test_11.0.19680.0.app), and the [application symbols](https://download.microsoft.com/download/C/7/9/C79AF269-A67E-4EEF-B9F2-52FAFA43E026/Microsoft_Application_11.0.19738.0.app).  
 Make a note of the location where you store the files. 
 2. Publish the symbol files, one file at a time to the Dynamics NAV Server instance:  
 Open the [!INCLUDE[nav_shell](../developer/includes/nav_shell_md.md)] as an administrator, and run the following command for each of the symbol files:
@@ -59,9 +60,13 @@ Open the [!INCLUDE[nav_shell](../developer/includes/nav_shell_md.md)] as an admi
  
 9. You must synchronize the schema for all tables of the new database.
  
-    From the [!INCLUDE[nav_dev_short](../developer/includes/nav_dev_short_md.md)], on the **Tools** menu, choose **Sync. Schema For All Tables**, and then **With Validation**. <!-- For more information, see [Synchronizing Table Schemas](Synchronizing-Table-Schemas.md).-->
+    <!--From the [!INCLUDE[nav_dev_short](../developer/includes/nav_dev_short_md.md)], on the **Tools** menu, choose **Sync. Schema For All Tables**, and then **With Validation**.  For more information, see [Synchronizing Table Schemas](Synchronizing-Table-Schemas.md).-->
 
-    You can also use the Sync-NAVTenant cmdlet of the [!INCLUDE[adminshell](../developer/includes/adminshell.md)].
+    You cannot use the [!INCLUDE[nav_dev_short](../developer/includes/nav_dev_short_md.md)] in this case. You must use the [Sync-NAVTenant cmdlet](/powershell/module/microsoft.dynamics.nav.management/sync-navtenant) of the [!INCLUDE[adminshell](../developer/includes/adminshell.md)], for example:
+
+    ```
+    Sync-NAVTenant -ServerInstance BC140 
+    ```
 
 > [!WARNING]  
 >  You can always enlarge a database later on, but you cannot make it smaller.  
@@ -70,7 +75,7 @@ Open the [!INCLUDE[nav_shell](../developer/includes/nav_shell_md.md)] as an admi
 
 ## Alter a Database
 
-The changes will not take effect until you restart the [!INCLUDE[nav_server](../developer/includes/nav_server_md.md)] instance.
+The changes will not take effect until you restart the [!INCLUDE[server](../developer/includes/server.md)] instance.
 
 > [!NOTE]  
 >  You cannot alter a database by using the [!INCLUDE[nav_dev_short](../developer/includes/nav_dev_short_md.md)] if the database is deployed on Azure SQL Database.
@@ -96,29 +101,30 @@ Increases the size of the existing transaction log files or adds new files to en
   
  You can also delete existing transaction log files that are empty. The first transaction log file that is listed is the primary file. You cannot delete the primary transaction log file.
 
- ## Collation Tab
+## Collation Tab
 
-Changes the collation that is used by the database.  
-   
-Before you change the collation, you have to select the **Single user** option on the **Options** tab.  
+You use this tab to set the collation when you are creating a new database.
+
+> [!IMPORTANT]
+> Do not use this tab to change the collation of an existing database. To change the collation, you must create a new database that uses the correct collation, and then export the data from the old database and import it to the new database. For more information, see [Changing Collation of Existing Database](../cside/cside-change-database-collation.md).
   
+<!--  
 ###  <a name="ChangeCollation"></a> Changing the Collation of a [!INCLUDE[navnow](../developer/includes/navnow_md.md)] Database
   
-> [!IMPORTANT]   
- You cannot change the collation directly in an existingdatabase. To change the collation, you must create a new database that uses the correct collation, and then export the data from the old database and import it to the new database. For more information, see [Changing Collation of Existing Database](../cside/cside-change-database-collation.md).
-  
+
 If you change the database collation, then the collation of objects in the database is changed except for tables that have the **LinkedObject** property set to **Yes**. You must manually re-create these objects. For example, you can script them in SQL Server Management Studio.
 
 If you change the collation from a case-sensitive to a case-insensitive collation or from an accent-sensitive to an accent-insensitive collation, then duplicates can occur in the primary keys of the tables. Duplicates can be caused by the values of the character data stored in the primary keys. If duplicates occur, then you receive an error message and the database collation change is stopped. We recommend that you do not change these attributes of a collation.  
   
 > [!NOTE]  
->  Changing the collation can be a lengthy process that depends on the size of the database and the number of companies in the database. The system tables and all user table indexes that contain character data must be rebuilt.  
+> Changing the collation can be a lengthy process that depends on the size of the database and the number of companies in the database. The system tables and all user table indexes that contain character data must be rebuilt.  
+-->
+
+The **Language** drop-down list displays the friendly name of the language, not the full Windows collation name. For some languages, there are multiple collations that sort characters differently. For example, the Windows collation languages include multiple Scandinavian languages, some of which sort Aa after Z, Æ, Ø, and some of which sort Aa after A and before B. If you upgrade from [!INCLUDE[nav2009](../developer/includes/nav2009_md.md)] to [!INCLUDE[prodshort](../developer/includes/prodshort.md)], you upgrade the database to the Windows collations. If you used SQL collation in earlier versions of [!INCLUDE[navnow](../developer/includes/navnow_md.md)], then after you upgrade, verify that the Windows collation sorts characters in the way that you expect.  
   
- The **Language** drop-down list displays the friendly name of the language, not the full Windows collation name. For some languages, there are multiple collations that sort characters differently. For example, the Windows collation languages include multiple Scandinavian languages, some of which sort Aa after Z, Æ, Ø, and some of which sort Aa after A and before B. If you upgrade from [!INCLUDE[nav2009](../developer/includes/nav2009_md.md)] to [!INCLUDE[prodshort](../developer/includes/prodshort.md)], you upgrade the database to the Windows collations. If you used SQL collation in earlier versions of [!INCLUDE[navnow](../developer/includes/navnow_md.md)], then after you upgrade, verify that the Windows collation sorts characters in the way that you expect.  
+If you set the **Validate Collation** check box, then collation languages that run with a different non-Unicode code page from your system non-Unicode code page are filtered out of the **Language** drop-down list. An example scenario of when you might want to choose a collation language that has a different code page from your system code page is if you want to prepare a Japanese database on a Danish computer.
   
- If you set the **Validate Collation** check box, then collation languages that run with a different non-Unicode code page from your system non-Unicode code page are filtered out of the **Language** drop-down list. An example scenario of when you might want to choose a collation language that has a different code page from your system code page is if you want to prepare a Japanese database on a Danish computer.
-  
-##  Options Tab
+## Options Tab
 
 Specifies database options that you set when you created the database. For example, you must select the **Single User** option before you perform any database tests. You must clear this option when the tests are completed.  
   
@@ -157,7 +163,7 @@ Specifies database settings that determine how [!INCLUDE[navnow](../developer/in
 |---------------------------------|---------------------------------------|  
 |**Save license in database**|Specifies that the license file is uploaded and stored in the database instead of on the server. This is useful if you are hosting several databases with separate license files on the same server.| 
 
-# Advanced Tab
+## Advanced Tab
 Specifies how locking is handled in the database and specifies the start ID for elements on new objects.  
   
 ### Locking Options

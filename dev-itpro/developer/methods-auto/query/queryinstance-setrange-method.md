@@ -2,13 +2,13 @@
 title: "SetRange Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 05/28/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Sets a filter on a range of values on a column of a query data set.
 
 ## Syntax
 ```
- Query.SetRange(Column: Any, [FromValue: Any], [ToValue: Any])
+ Query.SetRange(Column: Any [, FromValue: Any] [, ToValue: Any])
 ```
 ## Parameters
 *Query*  
@@ -46,7 +46,7 @@ The upper limit of the range. The data type of this parameter must match the dat
 ## Remarks  
  SETRANGE is a quick way to set a simple filter on a field. The SETRANGE method is functionally equivalent to calling *Query*.SetFilter\(ColumnName, ‘FromValue..ToValue’\).  
   
- To apply filters to a dataset, the **SETRANGE** method must be called before the **OPEN**, **SAVEASXML**, and **SAVEASCSV** methods, as shown in the following example. To remove filters, you call the [CLEAR Method](../../methods/devenv-clear-method.md) or **SETRANGE** without values for the *FromValue* and *ToValue* parameters.  
+ To apply filters to a dataset, the **SETRANGE** method must be called before the **OPEN**, **SAVEASXML**, and **SAVEASCSV** methods, as shown in the following example. To remove filters, you call the [CLEAR Method](../system/system-clear-joker-method.md) or **SETRANGE** without values for the *FromValue* and *ToValue* parameters.  
   
 ```  
 Query.SETRANGE(Column1, FromValue, ToValue);  
@@ -97,13 +97,11 @@ Query.READ;
   
 2.  Create the following AL variables and text constant in the object that will run the query, such as a codeunit.  
   
-    |Variable name|DataType|Subtype|  
-    |-------------------|--------------|-------------|  
-    |MyQuery|Query|Customer\_SalesQuantity|  
-  
-    |Text constant name|ENU Value|  
-    |------------------------|---------------|  
-    |Text000|Customer name = %1, Quantity = %2|  
+      ```
+     var
+        MyQuery: Query "Customer SalesQuantity";
+        Text000: Label 'Customer name = %1, Quantity = %2';
+    ``` 
   
  The following AL code uses the **SETRANGE** method to filter a query dataset over a range of values on the **Quantity** column. You can add the code to a codeunit, and then run the codeunit to see the results.  
   
@@ -116,10 +114,10 @@ MyQuery.SETFILTER(NAME, 'Selangorian Ltd.');
 MyQuery.OPEN;  
 // Reads each row in the dataset and displays message with column values.  
 // Stops reading when there are no more rows remaining in the dataset (READ is FALSE).  
-WHILE MyQuery.READ DO  
-BEGIN  
+while MyQuery.READ do  
+begin  
   MESSAGE(Text000, MyQuery.Name, MyQuery.Quantity);  
-END;   
+end;   
 // Saves the resulting dataset as a CSV file.  
 MyQuery.SAVEASCSV('c:\temp\CustomerSales.csv');  
 MyQuery.CLOSE;  

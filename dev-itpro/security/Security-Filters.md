@@ -1,13 +1,14 @@
 ---
 title: "Security Filter Modes"
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
 ms.author: jswymer
+author: jswymer
 ---
 # Using Security Filters
 
@@ -20,7 +21,7 @@ There are two parts to implementing security filters.
 
 ## Creating security filters
 
-You create security filter by using the [!INCLUDE[prodshort](../developer/includes/prodshort.md)] client. You set security filters on permission sets, which you assign to users. For more information about permission sets, see [Managing Users and Permissions](https://docs.microsoft.com/en-us/dynamics365/business-central/ui-how-users-permissions).  
+You create security filter by using the [!INCLUDE[prodshort](../developer/includes/prodshort.md)] client. You set security filters on permission sets, which you assign to users. For more information about permission sets, see [Managing Users and Permissions](/dynamics365/business-central/ui-how-users-permissions).  
   
   
 1.  Open the **Permission Sets** page.  

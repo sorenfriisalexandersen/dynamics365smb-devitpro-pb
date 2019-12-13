@@ -1,15 +1,12 @@
 ---
 title: "OpenWindow Method"
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.prod: "dynamics-nav-2018"
-ms.assetid: 1f26922f-f83c-4065-a195-70cd3619b39c
-caps.latest.revision: 0
-manager: edupont
+ms.service: "dynamics365-business-central"
 ---
 
 # OpenWindow Method

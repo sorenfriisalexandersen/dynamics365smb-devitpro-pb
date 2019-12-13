@@ -2,13 +2,13 @@
 title: "GetSubText Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -19,7 +19,7 @@ Gets part of a BigText variable.
 
 ## Syntax
 ```
-[Length := ]  BigText.GetSubText(var Variable: Text, Position: Integer, [Length: Integer])
+[Length := ]  BigText.GetSubText(var Variable: Text, Position: Integer [, Length: Integer])
 ```
 ## Parameters
 *BigText*  
@@ -56,14 +56,12 @@ The length of the result text.
 ## Example  
  The following examples demonstrate how to use the GETSUBTEXT method. This example requires that you create the following global variables and text constant.  
   
-|Variable Name|DataType|  
-|-------------------|--------------|  
-|MyBigText|BigText|  
-|VarSubText|Text|  
-  
-|Text Constant Name|ENU Value|  
-|------------------------|---------------|  
-|Text000|VarSubText = %1|  
+```
+var
+    MyBigText: BigText;
+    VarSubText: Text;
+    Text000: Label 'VarSubText = %1';
+```  
   
  The following example initializes the content of the MyBigText variable with the text `ABCDEFG`. The method starts from the third position \(the character C\) in the MyBigText variable and retrieves two characters. The result is the subtext CD. This is because the number 2 is specified for *Length* .  
   
@@ -118,6 +116,7 @@ MESSAGE(Text000, VarSubText);
 ```  
 
 ## See Also
+
 [BigText Data Type](bigtext-data-type.md)  
 [Getting Started with AL](../../devenv-get-started.md)  
 [Developing Extensions](../../devenv-dev-overview.md)

@@ -3,7 +3,7 @@ title: "Using the Code Analysis Tools with the Ruleset"
 description: "Configuring and using a custom ruleset on an AL project."
 author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 06/24/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -75,12 +75,13 @@ To trigger a new compilation manually, use the **Ctrl+Shift+B** shortcut to buil
 
 ## Limitations
 Changing the contents of the ruleset file will not be detected by the [!INCLUDE[d365al_ext_md](../includes/d365al_ext_md.md)]. To see the effects of changing the ruleset file, you can try any of the following:
-- Set the **al.incrementalBuild** setting to false and trigger a new compilation by using the **Ctrl+Shift+B** shortcut.
 - Reload the window.
 - In the project settings, change the **al.ruleSetPath** setting to an invalid path. Save the settings file, change back the setting, and save it.
+<!-- - In the project settings file, make changes to one of the settings, such as **al.ruleSetPath**, and save it. You can then undo the changes. -->
 
 ## See also
 [Ruleset for the Code Analysis Tool](devenv-rule-set-syntax-for-code-analysis-tools.md)    
 [Using the Code Analysis Tools](devenv-using-code-analysis-tool.md)  
 [Development in AL](devenv-dev-overview.md)  
-[Debugging in AL](devenv-debugging.md)
+[Debugging in AL](devenv-debugging.md)  
+[AL Language Extension Configuration](devenv-al-extension-configuration.md)  

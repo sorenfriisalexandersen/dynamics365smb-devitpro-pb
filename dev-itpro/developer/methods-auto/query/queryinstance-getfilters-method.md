@@ -2,13 +2,13 @@
 title: "GetFilters Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 05/28/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -38,10 +38,7 @@ All filters of the query
 [//]: # (IMPORTANT: END>DO_NOT_EDIT)
 
 ## Remarks  
- The **GETFILTERS** method returns the filters that are currently set for all data columns and filter rows by the [SETFILTER Method \(Query\)](../../methods-auto/query/queryinstance-setfilter-method.md) method, [SETRANGE Method \(Query\)](../../methods-auto/query/queryinstance-setrange-method.md)method, and the [ColumnFilter Property](../../properties/devenv-columnfilter-property.md) in Query Designer. The **GETFILTER** method does not return filters that are set on a column's source field by the [DataItemTableFilter Property](../../properties/devenv-dataitemtable-filter-property.md) in Query Designer or global filters that are set by the **FILTERGROUP** method.  
-  
-> [!NOTE]  
->  A filter row is row in Query Designer that is used to filter on a field that is not included in the resulting dataset. 
+ The **GETFILTERS** method returns the filters that are currently set for all data columns and filter rows by the [SETFILTER Method \(Query\)](../../methods-auto/query/queryinstance-setfilter-method.md) method, [SETRANGE Method \(Query\)](../../methods-auto/query/queryinstance-setrange-method.md)method, and the [ColumnFilter Property](../../properties/devenv-columnfilter-property.md). The **GETFILTER** method does not return filters that are set on a column's source field by the [DataItemTableFilter Property](../../properties/devenv-dataitemtable-filter-property.md) or global filters that are set by the **FILTERGROUP** method.  
 
 <!-- Links For more information, see [Understanding Query Filters](Understanding-Query-Filters.md) and [How to: Set Up Filter Rows in Query Designer](How-to-Set-Up-Filter-Rows-in-Query-Designer.md). -->  
   
@@ -66,41 +63,34 @@ Query.READ;
 ## Example  
  The following AL code example demonstrates how to use the **GETFILTERS** method on a query. The example code sets filters on a query column, and then displays a message when the query is run that indicates the filter on the column.  
   
- This example requires that you do the following:  
+ This example requires that you create a query called **Customer\_SalesQuantity** that has the following characteristics:  
   
-1.  Create a query called **Customer\_SalesQuantity** that has the following characteristics:  
-  
-    -   Links table **18 Customer** with table **37 Sales Lines** from the [!INCLUDE[demolong](../../includes/demolong_md.md)].  
-  
-    -   Includes columns for the **Name** and **No.** fields from the **Customer** table and the **Quantity** field from **Sales Lines** table.  
-  
-         <!--NAV For step-by-step instructions for creating this query, see [Walkthrough: Creating a Query to Link Two Tables](Walkthrough--Creating-a-Query-to-Link-Two-Tables.md).-->  
-  
-    -   The **ColumnFilter** property of the **Quantity** column is set with a filter that includes values greater than 10.  
-  
-2.  Create the following AL variables and text constant in the object that will run the query.  
-  
-    |Variable name|DataType|Subtype|  
-    |-------------------|--------------|-------------|  
-    |MyQuery|Query|Customer\_SalesQuantity|  
-    |MyFilters|Text|Not applicable|  
-  
-    |Text constant name|ENU Value|  
-    |------------------------|---------------|  
-    |Text000|The filters are as follows: %1|  
+-   Links table **18 Customer** with table **37 Sales Lines** from the [!INCLUDE[demolong](../../includes/demolong_md.md)].  
+
+-   Includes columns for the **Name** and **No.** fields from the **Customer** table and the **Quantity** field from **Sales Lines** table.  
+
+        <!--NAV For step-by-step instructions for creating this query, see [Walkthrough: Creating a Query to Link Two Tables](Walkthrough--Creating-a-Query-to-Link-Two-Tables.md).-->  
+
+-   The **ColumnFilter** property of the **Quantity** column is set with a filter that includes values greater than 10.  
   
  The following AL code runs the query and displays a message that contains the filter that is set on a query column. You can add the code to the OnRun trigger of a codeunit, and then run the codeunit to see the results.  
   
 ```  
-// Sets a filter to display only sales quantities greater than 10. This overwrites the value of ColumnFilter property.  
-MyQuery.SETFILTER(Quantity, '>10');  
-// Sets a filter to display the columns with the value Selangorian Ltd. only.  
-MyQuery.SETFILTER(NAME, 'Selangorian Ltd.');  
-// Runs the query and applies the filter.  
-MyQuery.OPEN;  
-// Returns the filters that are on the Quantity column and displays the filters in a message.  
-MyFilters := MyQuery.GETFILTERS;  
-MESSAGE(Text000, MyFilters);  
+var
+    MyQuery: Query "Customer SalesQuantity";
+    MyFilter: Text;
+    Text000: Label 'The filters are as follows: %1';
+begin
+    // Sets a filter to display only sales quantities greater than 10. This overwrites the value of ColumnFilter property.  
+    MyQuery.SETFILTER(Quantity, '>10');  
+    // Sets a filter to display the columns with the value Selangorian Ltd. only.  
+    MyQuery.SETFILTER(NAME, 'Selangorian Ltd.');  
+    // Runs the query and applies the filter.  
+    MyQuery.OPEN;  
+    // Returns the filters that are on the Quantity column and displays the filters in a message.  
+    MyFilters := MyQuery.GETFILTERS;  
+    MESSAGE(Text000, MyFilters);  
+end;
 ```  
   
  Running the code returns the following message:  

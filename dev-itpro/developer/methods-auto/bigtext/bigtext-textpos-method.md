@@ -2,13 +2,13 @@
 title: "TextPos Method"
 ms.author: solsen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.service: "dynamics365-business-central"
-author: solsen
+author: SusanneWindfeldPedersen
 ---
 [//]: # (START>DO_NOT_EDIT)
 [//]: # (IMPORTANT:Do not edit any of the content between here and the END>DO_NOT_EDIT.)
@@ -45,15 +45,13 @@ The position at which a specific string first occurs in this BigText instance.
   
 ## Example  
  The following examples show how to use the [TEXTPOS Method](../../methods-auto/bigtext/bigtext-textpos-method.md). These examples require that you create the following global variables and text constant.  
-  
-|Variable name|DataType|  
-|-------------------|--------------|  
-|MyBigText|BigText|  
-|VarPosition|Integer|  
-  
-|Text constant name|ENU value|  
-|------------------------|---------------|  
-|Text000|VarPosition = %1|  
+
+```
+var
+    MyBigText: BigText;
+    VarPosition: Text;
+    Text000: Label 'VarPosition = %1';
+```
   
  The following examples first initialize the content of the *BigText* variable with the text `ABCDEFG`.  
   
@@ -86,6 +84,7 @@ MESSAGE(Text000, VarPosition);
   
 
 ## See Also
+
 [BigText Data Type](bigtext-data-type.md)  
 [Getting Started with AL](../../devenv-get-started.md)  
 [Developing Extensions](../../devenv-dev-overview.md)

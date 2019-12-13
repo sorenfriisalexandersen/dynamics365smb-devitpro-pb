@@ -3,7 +3,7 @@ title: "Control Addin Object"
 description: "Description of the control addin object type."
 author: SusanneWindfeldPedersen
 ms.custom: na
-ms.date: 04/01/2019
+ms.date: 10/01/2019
 ms.reviewer: na
 ms.suite: na
 ms.tgt_pltfrm: na
@@ -80,59 +80,76 @@ Designing control add-ins that provide the best possible experience can require 
 
 
 ## Control add-in syntax example
-The following control add-in example syntax defines a chart that can show how customers are represented per country on a map. The control add-in is implemented as a `usercontrol` on a page called **CustomersMapPage**.
+The following control add-in syntax exemplifies how to implement small customizations regarding the layout and functionality of a page.
 
 ```
 // The controladdin type declares the new add-in.
-
-controladdin CustomersPerCountryChart
+controladdin SampleAddIn
 {
     // The Scripts property can reference both external and local scripts.
-    Scripts = 'https://code.jquery.com/jquery-2.1.0.min.js',
-              'js/main.js';
+    Scripts = 'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js',
+                'main.js';
+    // The StartupScript is a special script that the web client calls once the page is loaded.
+    StartupScript = 'startup.js';
 
-    // The StartupScript is a special script that the webclient calls once the page is loaded.
-    StartupScript = 'js/chart.js';
+    // Specifies the StyleSheets that are included in the control add-in.
+    StyleSheets = 'skin.css';
 
-    // Images and StyleSheets can be referenced in a similar fashion.
-
-    // The layout properties define how control add-in are displayed on the page.
-    VerticalShrink = true;
+    // Specifies the Images that are included in the control add-in.
+    Images = 'image.png';
 
     // The procedure declarations specify what JavaScript methods could be called from AL.
-    // In JavaScript code, there should be a global function LoadData(data) {}
-    procedure LoadData(Data : JsonArray);
+    // In main.js code, there should be a global function CallJavaScript(i,s,d,c) {Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('CallBack', [i, s, d, c]);}
+    procedure CallJavaScript(i: integer; s: text; d: decimal; c: char);
 
     // The event declarations specify what callbacks could be raised from JavaScript by using the webclient API:
-    // Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('CountryClicked', [{country: 'M}])
-    event CountryClicked(Country: JsonObject);
+    // Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('CallBack', [42, 'some text', 5.8, 'c'])
+    event Callback(i: integer; s: text; d: decimal; c: char);
 }
+```
 
-page 50100 CustomersMapPage
+The `controladdin` object is then invoked as a `usercontrol` on a page called **PageWithAddIn**. 
+
+```
+page 50130 PageWithAddIn
 {
     layout
     {
         area(Content)
         {
-            // The control add-in can be placed on the page using usercontrol keyword.
-
-            usercontrol(ControlName; CustomersPerCountryChart)
+             // The control add-in can be placed on the page using usercontrol keyword.
+            usercontrol(ControlName; SampleAddIn)
             {
-                // The control add-in events can be handled by defining a trigger with a corresponding name.
 
-                trigger CountryClicked(Country : JsonObject)
-                var Data : JsonArray;
+                ApplicationArea = All;
+
+                 // The control add-in events can be handled by defining a trigger with a corresponding name.
+                trigger Callback(i: integer; s: text; d: decimal; c: char)
                 begin
+                    Message('Got from js: %1, %2, %3, %4', i, s, d, c);
+                end;
+            }
+        }
+    }
 
+    actions
+    {
+        area(Creation)
+        {
+            action(CallJavaScript)
+            {
+                ApplicationArea = All;
+
+                trigger OnAction();
+                begin
+                    
                     // The control add-in methods can be invoked via a reference to the usercontrol.
-
-                    CurrPage.ControlName.LoadData(Data);
-                end;                  
+                    CurrPage.ControlName.CallJavaScript(5, 'text', 6.3, 'c');
+                end;
             }
         }
     }
 }
-
 ```
 
 ## See Also  
